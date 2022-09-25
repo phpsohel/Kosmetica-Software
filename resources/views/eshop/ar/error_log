@@ -1,0 +1,12 @@
+[29-Jun-2022 04:31:46 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function asset() in /home/kosmetic/public_html/resources/views/eshop/checkout.blade.php:265
+Stack trace:
+#0 {main}
+  thrown in /home/kosmetic/public_html/resources/views/eshop/checkout.blade.php on line 265
+[29-Jun-2022 04:32:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function asset() in /home/kosmetic/public_html/resources/views/eshop/checkout.blade.php:265
+Stack trace:
+#0 {main}
+  thrown in /home/kosmetic/public_html/resources/views/eshop/checkout.blade.php on line 265
+[29-Jun-2022 04:32:26 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function asset() in /home/kosmetic/public_html/resources/views/eshop/checkout.blade.php:265
+Stack trace:
+#0 {main}
+  thrown in /home/kosmetic/public_html/resources/views/eshop/checkout.blade.php on line 265

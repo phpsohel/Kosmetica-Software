@@ -1,0 +1,66 @@
+===DOC ROOT Folders===
+/home/kosmetic/public_html/
+########################################################
+===Links List===
+########################################################
+===ALLOW List===
+########################################################
+===ImunifyAV Check List===
+
+########################################################
+===Maldet Check List===
+{HEX}Malware.Expert.php.strrot : /home/kosmetic/public_html/kodex/app/controller/utils.php
+{CAV}GGS.Team.detection.A : /home/kosmetic/public_html/vendor/symfony/console/Resources/bin/hiddeninput.exe
+########################################################
+===GREP check List===
+./kodex/static/js/lib/ztree/ztree.js
+./kodex/plugins/adminer/adminer/index.php
+./kodex/plugins/toolsCommon/static/pie/.pie.tif
+./kodex/app/controller/utils.php
+./vendor/fzaninotto/faker/src/Faker/Provider/nl_NL/Person.php
+./vendor/fzaninotto/faker/src/Faker/Provider/nb_NO/Person.php
+./vendor/srmklive/paypal/docs/build/html/_static/underscore-1.3.1.js
+./.idea/workspace.xml
+########################################################
+===Image Check List===
+./vendor/mike42/escpos-php/test/unit/resources/canvas_black.bmp: data
+./vendor/mike42/escpos-php/test/unit/resources/black_white.bmp: data
+./vendor/mike42/escpos-php/test/unit/resources/canvas_white.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/rgba16-1924.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/pal8os2v2-16.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/pal8os2v2.bmp: PC bitmap, OS/2 2.x format, 127 x 0
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/rgba32h56.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/rgba16-5551.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/rgba32-81284.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/pal8os2-hs.bmp: PC bitmap, OS/2 1.x format, 127 x 64
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/rgb32-xbgr.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/rgb24jpeg.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/rgba16-4444.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/rgb32h52.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/pal8os2sp.bmp: PC bitmap, OS/2 1.x format, 127 x 64
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/rgb24lprof.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/pal8os2v2-sz.bmp: PC bitmap, OS/2 2.x format, 127 x 0
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/rgb24prof2.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/rgb24png.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/rgba32-1010102.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/pal1huff.bmp: PC bitmap, OS/2 2.x format, 127 x 0
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/rgba32.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/pal8os2-sz.bmp: PC bitmap, OS/2 1.x format, 127 x 64
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/rgba32-61754.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/q/rgb24prof.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/b/badheadersize.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/x/ba-bm.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/g/pal8v5.bmp: data
+./vendor/mike42/gfx-php/test/resources/bmpsuite/g/pal8os2.bmp: PC bitmap, OS/2 1.x format, 127 x 64
+./vendor/mike42/gfx-php/test/resources/bmpsuite/g/pal8v4.bmp: data
+./vendor/mike42/gfx-php/test/resources/pngsuite/xcrn0g04.png: data
+./vendor/mike42/gfx-php/test/resources/pngsuite/xlfn0g04.png: data
+./vendor/mike42/gfx-php/test/resources/pngsuite/xs1n0g01.png: data
+./vendor/mike42/gfx-php/test/resources/pngsuite/xs2n0g01.png: data
+./vendor/mike42/gfx-php/test/resources/pngsuite/xs7n0g01.png: data
+./vendor/mike42/gfx-php/test/resources/pngsuite/xs4n0g01.png: data
+./vendor/mike42/gfx-php/test/resources/small-files/canvas_black.bmp: data
+./vendor/mike42/gfx-php/test/resources/small-files/black_white.bmp: data
+./vendor/mike42/gfx-php/test/resources/small-files/canvas_white.bmp: data
+./public/images/product/1655894767155Time Revolution The First Treatment Essence Rx ( 4Th_2019)(150 Ml).jpg: RIFF (little-endian) data
+########################################################
