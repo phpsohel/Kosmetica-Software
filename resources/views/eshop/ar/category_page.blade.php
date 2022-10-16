@@ -11,7 +11,7 @@
                     <!-- <a href="#" class="btn btn-dark">Shop Now</a> -->
                 </div><!-- End .banner-content -->
             </div><!-- End .banner -->
-            
+
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container">
                     <ol class="breadcrumb mt-0">
@@ -23,6 +23,9 @@
             </nav>
 
             <div class="container">
+                <br>
+                <br>
+                <br>
                 <div class="row">
                     <div class="col-lg-9">
                         <nav class="toolbox">
@@ -69,13 +72,13 @@
                                     </figure>
                                     <div class="product-details">
                                         <div class="ratings-container">
-                                           
+
                                         </div><!-- End .product-container -->
                                         <h2 class="product-title">
                                             <a href="{{ route('eshop-detail', $row->id) }}">{{ $row->name }}</a>
                                         </h2>
-                                       
-                                         
+
+
                                     </div><!-- End .product-details -->
                                 </div>
                             </div>
@@ -89,16 +92,16 @@
                             </div><!-- End .toolbox-item -->
 
                             <ul class="pagination">
-                              
+
                             </ul>
                         </nav>
                     </div><!-- End .col-lg-9 -->
 
                     <aside class="sidebar-shop col-lg-3 order-lg-first">
                         <div class="sidebar-wrapper">
-                           
 
-                           
+
+
 
                             <!--<div class="widget">
                                 <h3 class="widget-title">
@@ -115,16 +118,16 @@
                                             <li><a href="#">2XL</a></li>
                                             <li><a href="#">3XL</a></li>
                                         </ul>
-                                    </div><!-- End .widget-body 
-                                </div><!-- End .collapse 
+                                    </div><!-- End .widget-body
+                                </div><!-- End .collapse
                             </div>--><!-- End .widget -->
 
-                           
-                           
+
+
 
                             <div class="widget widget-featured">
                                 <h3 class="widget-title">Featured Products</h3>
-                                
+
                                 <div class="widget-body"><div class="owl-carousel widget-featured-products">
                                         <div class="featured-col">
 
@@ -152,7 +155,7 @@
                                             </div>
                                             @endforeach
 
-                                            
+
                                         </div><!-- End .featured-col -->
 
                                         <div class="featured-col">
@@ -185,7 +188,7 @@
                             </div><!-- End .widget -->
 
                             <div class="widget widget-block">
-                               
+
                             </div><!-- End .widget -->
                         </div><!-- End .sidebar-wrapper -->
                     </aside><!-- End .col-lg-3 -->

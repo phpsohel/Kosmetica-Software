@@ -46,17 +46,15 @@ class HomeController extends Controller
 
     public function save_blog(Request $request)
     {
-    //  dd($request->all());
+//     dd($request->all());
         $request->validate([
-
             'blog_title'  => 'required',
+            'blog_title_ar'  => 'required',
             'blog'=> 'required',
+            'blog_ar'=> 'required',
             'blog_image'=> 'required|mimes:jpg,jpeg,png'
-
         ]);
-
         $blog_image = $request->file('blog_image');
-
 
         $name_generator  = hexdec(uniqid());
         $image_extension = strtolower($blog_image->getClientOriginalExtension());
@@ -69,14 +67,13 @@ class HomeController extends Controller
         $blog = new Blog;
 
         $blog->blog_title            = $request->blog_title;
+        $blog->blog_title_ar         = $request->blog_title_ar;
         $blog->blog                  = $request->blog;
-        $blog->featured                  = $request->featured;
+        $blog->blog_ar                  = $request->blog_ar;
+        $blog->featured              = $request->featured;
         $blog->blog_image            = $last_image;
-
         $blog->save();
-
         return redirect('/blog-list');
-        // return view('blog.add_blog');
     }
 
     //blog list
@@ -100,7 +97,9 @@ class HomeController extends Controller
         $request->validate([
 
             'blog_title'  => 'required',
-            'blog'=> 'required'
+            'blog_title_ar'  => 'required',
+            'blog'=> 'required',
+            'blog_ar'=> 'required'
             // 'blog_image'=> 'required|mimes:jpg,jpeg,png'
 
         ]);
@@ -126,7 +125,9 @@ class HomeController extends Controller
             $blog = Blog::find($request->id);
 
             $blog->blog_title            = $request->blog_title;
+            $blog->blog_title_ar         = $request->blog_title_ar;
             $blog->blog                  = $request->blog;
+            $blog->blog_ar               = $request->blog_ar;
             $blog->blog_image            = $last_image;
 
             $blog->save();
@@ -137,7 +138,9 @@ class HomeController extends Controller
             $blog = Blog::find($request->id);
 
             $blog->blog_title            = $request->blog_title;
+            $blog->blog_title_ar            = $request->blog_title_ar;
             $blog->blog                  = $request->blog;
+            $blog->blog_ar                  = $request->blog_ar;
 
             $blog->save();
         }

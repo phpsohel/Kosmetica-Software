@@ -3,18 +3,22 @@
     <main class="main">
         <div class="banner banner-cat" style="background-image: url('{{ asset('/') }}public/assets/frontend/images/sliderbackground.png'); height: 215px;">
             <div class="banner-content container">
-                <h1 class="banner-title"> عروض  </h1>
+                <h1 class="banner-title" style="float: right"> عروض  </h1>
             </div>
         </div>
+
         <nav aria-label="breadcrumb" class="breadcrumb-nav">
             <div class="container">
-                <ol class="breadcrumb mt-0">
-                    <li class="breadcrumb-item"><a href="#"><i class="icon-home"></i></a></li>
+                <ol class="breadcrumb mt-0" style="float: right">
                     <li class="breadcrumb-item active" aria-current="page">عرض</li>
+                    <li class="breadcrumb-item"><a href="#"><i class="icon-home"></i></a></li>
                 </ol>
             </div><!-- End .container -->
         </nav>
         <div class="container">
+            <br>
+            <br>
+            <br>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row row-sm">
@@ -28,20 +32,20 @@
                             <div class="col-6 col-md-4 col-lg-3 col-xl-3">
                                 <div class="product-default">
                                     <figure>
-                                        <a href="{{ route('eshop-details',['id' => $row->id, 'name' => $name ]) }}">
+                                        <a href="{{ route('eshop-details.ar',['id' => $row->id, 'name' => $name ]) }}">
                                             <img src="{{ url('public/images/product', $first_image) }}" alt="product" style="height: auto; width: auto; margin: auto;">
                                         </a>
                                     </figure>
                                     <div class="product-details">
                                         <div class="price-box" style="display: inline-flex;margin-bottom: 5px;">
                                             @if($row->brand->title != null)
-                                                <span class="product-details">{{ $row->brand->title }}</span>
+                                                <span class="product-details">{{ $row->brand->title_ar }}</span>
                                             @endif
 
                                         </div><!-- End .price-box -->
 
                                         <h2 class="product-title">
-                                            <a  href="{{ route('eshop-details',['id' => $row->id, 'name' => $name ]) }}">{{ $row->name }}</a>
+                                            <a  href="{{ route('eshop-details.ar',['id' => $row->id, 'name' => $name ]) }}">{{ $row->name_ar }}</a>
                                         </h2>
 
                                         <div class="price-box">
@@ -93,7 +97,7 @@
                                             <form action="{{ route('add-to-cart', $row->id) }}" method="POST">
                                                 @csrf
                                                 @if($row->qty > 0 )
-                                                    <button type="submit" class="btn-icon btn-add-cart"><i class="icon-bag"></i>ADD TO CART</button>
+                                                    <button type="submit" class="btn-icon btn-add-cart"><i class="icon-bag"></i>أضف إلى السلة</button>
                                                 @else
                                                     <a href="{{ route('eshop-details',['id' => $row->id, 'name' => $name ]) }}" class="btn-add-cart paction"><i class="fa fa-eye" aria-hidden="true"></i> View Details</a>
                                                 @endif

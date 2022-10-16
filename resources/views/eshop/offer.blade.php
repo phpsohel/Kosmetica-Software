@@ -130,7 +130,7 @@
 
                     </div>
 
-                  
+
                 </div><!-- End .col-lg-9 -->
 
                 <aside class="sidebar-shop col-lg-3 order-lg-first" >

@@ -2,7 +2,9 @@
 .banners-group {
   margin-bottom: 1.9rem;
 }
-
+.f-right{
+    float: right!important;
+}
 .banner {
   display: block;
   position: relative;
@@ -43,6 +45,7 @@
     font: 800 3rem / 1.1 $font-family;
     letter-spacing: -.025rem;
     text-transform: uppercase;
+      float: right;
   }
 
   .banner-subtitle {

@@ -8,17 +8,19 @@
 		<a href="{{route('add-blog')}}" class="btn btn-info" style="float: right"><i class="dripicons-plus"></i>Create Blog</a>
 </div>
 <section>
-    
+
     <div class="table-responsive">
         <table id="product-data-table" class="table" style="width: 100%">
             <thead>
                 <tr>
                     <th class="not-exported"></th>
                     <th>#</th>
-                    <th>Title</th>
+                    <th>Title(en)</th>
+                    <th>Title(ar)</th>
                     <th>Image</th>
-                    <th>Blog</th>
-                    
+                    <th>Blog(en)</th>
+                    <th>Blog(ar)</th>
+
                     <th class="not-exported">Action</th>
                 </tr>
             </thead>
@@ -29,8 +31,10 @@
             		<td></td>
             		<td>{{ $i }}</td>
             		<td>{{ $row->blog_title }}</td>
+            		<td>{{ $row->blog_title_ar }}</td>
             		<td><img src="{{ $row->blog_image }}" style="height: 50px; width: 100px;"></td>
             		<td>{{ $row->blog }}</td>
+            		<td>{{ $row->blog_ar }}</td>
             		<td>
             			<a type="button" class="btn btn-primary" href="{{ route('edit-blog', $row->id) }}">Edit</a>
             			<a type="button" class="btn btn-primary" href="{{ route('delete-blog', $row->id) }}">Delete</a>
@@ -39,10 +43,9 @@
             	@php($i++)
             	@endforeach
             </tbody>
-            
+
         </table>
     </div>
 </section>
-
 
 @endsection

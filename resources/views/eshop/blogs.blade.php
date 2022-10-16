@@ -41,16 +41,16 @@
                                 <div class="entry-meta">
                                     <span><i class="icon-calendar"></i>{{ date('M d, Y', strtotime($row->created_at)) }}</span>
                                     <span><i class="icon-user"></i>By <a href="#">Admin</a></span>
-                                    
+
                                 </div><!-- End .entry-meta -->
                             </div><!-- End .entry-body -->
                         </article><!-- End .entry -->
                         @endforeach
-                        
 
-                        
 
-                        
+
+
+
 
                        <!--  <nav class="toolbox toolbox-pagination">
                             <ul class="pagination">
@@ -74,15 +74,13 @@
 
                     <aside class="sidebar col-lg-3">
                         <div class="sidebar-wrapper">
-                            
 
-                           
+
+
 
                             <div class="widget">
                                 <h4 class="widget-title">Recent Posts</h4>
-
                                 <ul class="simple-entry-list">
-
                                 	@foreach($recent_blog as $row)
                                     <li>
                                         <div class="entry-media">
@@ -98,10 +96,9 @@
                                         </div><!-- End .entry-info -->
                                     </li>
                                     @endforeach
-                                
                                 </ul>
                             </div><!-- End .widget -->
-      
+
                         </div><!-- End .sidebar-wrapper -->
                     </aside><!-- End .col-lg-3 -->
                 </div><!-- End .row -->

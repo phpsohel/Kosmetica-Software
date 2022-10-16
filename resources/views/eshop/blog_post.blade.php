@@ -17,7 +17,7 @@
                             <div class="entry-media">
                                 <div class="">
                                     <img src="{{ asset('/') }}{{ $blog->blog_image }}" alt="Post">
-                                   
+
                                 </div><!-- End .entry-slider -->
                             </div><!-- End .entry-media -->
 
@@ -34,12 +34,12 @@
                                 <div class="entry-meta">
                                     <span><i class="icon-calendar"></i>{{ date('M d, Y', strtotime($blog->created_at)) }}</span>
                                     <span><i class="icon-user"></i>By <a href="#">Admin</a></span>
-                                    
+
                                 </div><!-- End .entry-meta -->
 
                                 <div class="entry-content">
                                     <p>{{ $blog->blog }}</p>
-                                   
+
                                 </div><!-- End .entry-content -->
 
                                 <div class="entry-share">
@@ -67,9 +67,9 @@
                                     </div><!-- End .social-icons -->
                                 </div><!-- End .entry-share -->
 
-                                
 
-                               
+
+
                             </div><!-- End .entry-body -->
                         </article><!-- End .entry -->
 
@@ -106,26 +106,20 @@
                                     </div><!-- End .entry-body -->
                                 </article>
                                 @endforeach
-                              
 
-                              
 
-                                
+
+
+
                             </div><!-- End .owl-carousel -->
                         </div><!-- End .related-posts -->
                     </div><!-- End .col-lg-9 -->
 
                     <aside class="sidebar col-lg-3">
                         <div class="sidebar-wrapper">
-                            
-
-                           
-
                             <div class="widget">
                                 <h4 class="widget-title">Recent Posts</h4>
-
                                 <ul class="simple-entry-list">
-
                                 	@foreach($recent_blog as $row)
                                     <li>
                                         <div class="entry-media">
@@ -141,17 +135,17 @@
                                         </div><!-- End .entry-info -->
                                     </li>
                                     @endforeach
-                                   
+
 
                                 </ul>
                             </div><!-- End .widget -->
 
-                            
-
-                         
 
 
-                            
+
+
+
+
                         </div><!-- End .sidebar-wrapper -->
                     </aside><!-- End .col-lg-3 -->
                 </div><!-- End .row -->

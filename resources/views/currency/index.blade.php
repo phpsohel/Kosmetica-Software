@@ -1,17 +1,20 @@
-@extends('layout.main') @section('content')
+@extends('layout.main')
+@section('content')
 @if($errors->has('name'))
 <div class="alert alert-danger alert-dismissible text-center">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ $errors->first('name') }}</div>
 @endif
 @if($errors->has('code'))
 <div class="alert alert-danger alert-dismissible text-center">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ $errors->first('code') }}</div>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    {{ $errors->first('code') }}</div>
 @endif
 @if(session()->has('message'))
-  <div class="alert alert-success alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('message') }}</div> 
+  <div class="alert alert-success alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      {{ session()->get('message') }}</div>
 @endif
 @if(session()->has('not_permitted'))
-  <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('not_permitted') }}</div> 
+  <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('not_permitted') }}</div>
 @endif
 
 <section>
@@ -31,7 +34,7 @@
             </thead>
             <tbody>
                 @foreach($lims_currency_all as $key=>$currency)
-                <tr data-id="{{$currency->id}}">
+                <tr data-id="{{ $currency->id }}">
                     <td>{{$key}}</td>
                     <td>{{ $currency->name }}</td>
                     <td>{{ $currency->code }}</td>
@@ -81,8 +84,8 @@
             <div class="form-group">
                 <label>{{trans('file.Exchange Rate')}} *</label>
                 {{Form::text('exchange_rate',null,array('required' => 'required', 'class' => 'form-control', 'placeholder' => 'Type exchange rate...'))}}
-            </div>                
-            <div class="form-group">       
+            </div>
+            <div class="form-group">
               <input type="submit" value="{{trans('file.submit')}}" class="btn btn-primary">
             </div>
         </div>
@@ -113,8 +116,8 @@
                 <label>{{trans('file.Exchange Rate')}} *</label>
                 {{Form::text('exchange_rate',null,array('required' => 'required', 'class' => 'form-control', 'placeholder' => 'Type exchange rate...'))}}
             </div>
-            <input type="hidden" name="currency_id">             
-            <div class="form-group">       
+            <input type="hidden" name="currency_id">
+            <div class="form-group">
               <input type="submit" value="{{trans('file.submit')}}" class="btn btn-primary">
             </div>
         </div>
@@ -213,7 +216,7 @@
                         body: function ( data, row, column, node ) {
                             if (column === 0 && (data.indexOf('<img src=') !== -1)) {
                                 var regex = /<img.*?src=['"](.*?)['"]/;
-                                data = regex.exec(data)[1];                 
+                                data = regex.exec(data)[1];
                             }
                             return data;
                         }

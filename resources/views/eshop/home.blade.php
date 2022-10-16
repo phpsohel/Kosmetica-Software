@@ -281,10 +281,10 @@
 
                                 <div class="price-box">
                                     @if($row->promotion == null)
-                                        <span class="product-price">৳{{$row->price}}</span>
+                                        <span class="product-price">{{$row->price}}</span>
                                     @else
-                                        <span class="old-price">৳{{$row->price}}</span>
-                                        <span class="promotional-price">৳{{$row->promotion_price}}</span>
+                                        <span class="old-price">{{$row->price}}</span>
+                                        <span class="promotional-price">{{$row->promotion_price}}</span>
                                     @endif
                                 </div><!-- End .price-box -->
 
@@ -658,11 +658,11 @@
        // Routine Product
              $(".prodata").on("click", function(){
                  var tag_id = $(this).data("id");
-                 $('.prodata').find('h4').css({              
+                 $('.prodata').find('h4').css({
                     'border-bottom': '0px solid',
                     'padding-bottom': '0px'
                 });
-                $(this).find('h4').css({            
+                $(this).find('h4').css({
                     'border-bottom': '2px solid',
                     'padding-bottom': '10px'
                 });
@@ -737,11 +737,11 @@
   /// Ingredients Product
              $(".ingredientdata").on("click", function(){
                  var tag_id = $(this).data("id");
-                 $('.ingredientdata').find('h4').css({              
+                 $('.ingredientdata').find('h4').css({
                     'border-bottom': '0px solid',
                     'padding-bottom': '0px'
                 });
-                $(this).find('h4').css({            
+                $(this).find('h4').css({
                     'border-bottom': '2px solid',
                     'padding-bottom': '10px'
                 });
@@ -815,11 +815,11 @@
              /// Skin Product
              $(".skinprodata").on("click", function(){
                  var tag_id = $(this).data("id");
-                 $('.skinprodata').find('h4').css({              
+                 $('.skinprodata').find('h4').css({
                     'border-bottom': '0px solid',
                     'padding-bottom': '0px'
                 });
-                $(this).find('h4').css({            
+                $(this).find('h4').css({
                     'border-bottom': '2px solid',
                     'padding-bottom': '10px'
                 });

@@ -1,16 +1,20 @@
-@extends('layout.website')
+@extends('layout.ar_website')
 @section('home_content')
  <main class="main">
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+                    <ol class="breadcrumb" style="float: right"style="float: right">
+                        <li class="breadcrumb-item active" aria-current="page">عربة التسوق</li>
+                        <li class="breadcrumb-item"><a href="{{ route('eshop.ar') }}"><i class="icon-home"></i></a></li>
                     </ol>
                 </div><!-- End .container -->
             </nav>
             <div class="container">
+                <br>
+                <br>
+                <br>
                 <div class="row">
+
                     <div class="col-lg-8">
                         <div class="cart-table-container">
                             <table class="table table-cart">
@@ -18,10 +22,10 @@
                                 <thead>
                                     <tr>
                                         <th class="product1-col"></th>
-                                        <th class="product-col">Product</th>
-                                        <th class="price-col">Price</th>
-                                        <th class="qty-col">Qty</th>
-                                        <th>Subtotal</th>
+                                        <th class="product-col">منتج</th>
+                                        <th class="price-col">سعر</th>
+                                        <th class="qty-col">الكمية</th>
+                                        <th>المجموع الفرعي</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -40,27 +44,27 @@
                                         </td>
                                         <td class="product-col">
                                             <figure class="product-image-container">
-                                                <a href="{{ route('eshop-details',['id' => $row->product->id, 'name' => $name ]) }}" class="product-image">
+                                                <a href="{{ route('eshop-details.ar',['id' => $row->product->id, 'name' => $name ]) }}" class="product-image">
                                                     <img src="{{ url('public/images/product', $first_image) }}" style="height: 150px; width: auto;" alt="product">
                                                 </a>
                                             </figure>
                                             <h5  class="product-title">
-                                                <a  href="{{ route('eshop-details',['id' => $row->product->id, 'name' => $name ]) }}">{{ $row->product->name }}</a>
+                                                <a  href="{{ route('eshop-details.ar',['id' => $row->product->id, 'name' => $name ]) }}">{{ $row->product->name_ar }}</a>
                                             </h5>
                                         </td>
                                         <td>৳{{ $row->product_price }}</td>
                                         <td>
-                                            <form action="{{ route('cart-quantity-update', $row->id) }}" method="POST">
+                                            <form action="{{ route('cart-quantity-update.ar', $row->id) }}" method="POST">
                                                 @csrf
                                             <input class="vertical-quantity form-control" type="text" value="{{  $row->product_quantity }}" name="product_quantity"><br>
-                                            <button type="submit" class="btn btn-outline-secondary btn-update-cart">Update Shopping Cart</button>
+                                            <button type="submit" class="btn btn-outline-secondary btn-update-cart">تحديث سلة الشراء</button>
                                             </form>
                                         </td>
                                         <td>৳{{ $row->product_price * $row->product_quantity }}</td>
                                     </tr>
                                     @endforeach
                                     @else
-                                    <h1 style="font-size: 20px;">No Products in the Cart!</h1>
+                                    <h1 style="font-size: 20px;">لا توجد منتجات في العربة!</h1>
                                     @endif
 
                                 </tbody>
@@ -69,12 +73,11 @@
                                     <tr>
                                         <td colspan="4" class="clearfix">
                                             <div class="float-left">
-                                                <a href="{{ route('eshop') }}" class="btn btn-outline-secondary">Continue Shopping</a>
+                                                <a href="{{ route('eshop.ar') }}" class="btn btn-outline-secondary">مواصلة التسوق</a>
                                             </div><!-- End .float-left -->
                                              @if($carts->count() > 0)
                                             <div class="float-right">
-                                                <a href="{{ route('clear-cart') }}" class="btn btn-outline-secondary btn-clear-cart">Clear Shopping Cart</a>
-                                               <!--  <button type="submit" class="btn btn-outline-secondary btn-update-cart">Update Shopping Cart</button> -->
+                                                <a href="{{ route('clear-cart') }}" class="btn btn-outline-secondary btn-clear-cart">تفريغ عربة التسوق</a>
                                             </div><!-- End .float-right -->
                                             @endif
                                         </td>
@@ -88,30 +91,25 @@
                      @if($carts->count() > 0)
                     <div class="col-lg-4">
                         <div class="cart-summary">
-                            <h3>Summary</h3>
-
+                            <h3>ملخص</h3>
                             <h4>
-                                <a data-toggle="collapse" href="#total-estimate-section" class="collapsed" role="button" aria-expanded="true" aria-controls="total-estimate-section">Shipping Cost</a>
+                                <a data-toggle="collapse" href="#total-estimate-section" class="collapsed" role="button" aria-expanded="true" aria-controls="total-estimate-section">تكلفة الشحن</a>
                             </h4>
-
-
-
                             <div class="collapse show" id="total-estimate-section">
-                                <form action="{{ route('checkout', request()->ip()) }}" id="shippingCheck" method="POST">
+                                <form action="{{ route('checkout.ar', request()->ip()) }}" id="shippingCheck" method="POST">
                                     @csrf
-
                                     <div style="display: none;">
                                         <h5 id="shippingmsg" style="padding: 10px ;background-color: rgba(255,0,0,0.73); border-radius: 5px;"> </h5>
                                     </div>
                                     <div class="form-group form-group-custom-control ">
                                           <input type="radio" id="inside" name="shipping_cost" value="70">
-                                          <label for="male">Inside Dhaka BDT 70</label><br>
+                                          <label for="male">داخل دكا عربي 70</label><br>
                                           <input type="radio" id="outside" name="shipping_cost" value="100">
-                                          <label for="female">Outside Dhaka BDT 100</label><br>
+                                          <label for="female">خارج دكا 100 دينار بحريني</label><br>
                                            <input class="coupon_question"  href="#all_outlet" id="outlet" type="radio" name="shipping_cost" value="0" onchange="valueChanged()"/>
-                                           <label for="male"><a data-toggle="collapse" class="collapsed" role="button" aria-expanded="false" aria-controls="all_outlet">Collect From Shop</a></label>
+                                           <label for="male"><a data-toggle="collapse" class="collapsed" role="button" aria-expanded="false" aria-controls="all_outlet">الاستلام من المتجر</a></label>
                                         @php
-                                           $warehouses = \App\Warehouse::where('id','!=' ,2 )->where('id','!=' ,6 )->get();
+                                           $warehouses = \App\Warehouse::where('id','!=' ,2 )->where('id','!=' ,1 )->get();
                                         @endphp
                                         @php
                                             $cartsCheck = \App\Cart::where('user_ip', request()->ip())->latest()->first();
@@ -122,16 +120,13 @@
                                                     <input type="hidden" name="pro_id" id="pro_id" value="{{ $cartsCheck->product_id}}">
                                             <input type="hidden" name="ip" id="ip" value="{{ $ip }}">
                                                     <select name="warehouse_id" id="warehouse_id">
-                                                        <option value="0">Select One</option>
+                                                        <option value="0">حدد واحد</option>
                                                         @foreach($warehouses as $warehouse)
-                                                        <option value="{{ $warehouse ->id }}">{{ $warehouse ->name }}</option>
+                                                        <option value="{{ $warehouse ->id }}">{{ $warehouse ->name_ar }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div><!-- End .form-group -->
-                                          </div><!-- End #total-estimate-section -->
-                                        {{--<br>--}}
-                                        {{--<input class="hub_question"  href="#all_hub" id="hub" type="radio"  name="shipping_cost" value="0" onchange="hubChanged()"/>--}}
-                                        {{--<label for="male"><a data-toggle="collapse" class="collapsed" role="button" aria-expanded="false" aria-controls="all_hub">Express Delivery</a></label>--}}
+                                          </div>
                                         @php
                                             $warehouses = \App\Hub::get();
                                         @endphp
@@ -146,33 +141,28 @@
                                             </div><!-- End .form-group -->
                                         </div><!-- End #total-estimate-section -->
 
-
                                         <div class="collapse areaselection" id="all_outlet">
                                             <div class="form-group col-md-6">
                                                 <select name="area_id" id="area_id" style="width: 175px !important;">
-                                                       <option  value="0">Select area</option>
+                                                       <option  value="0">حدد المنطقة</option>
                                                         <option  value=""></option>
                                                 </select>
                                             </div><!-- End .form-group -->
                                         </div><!-- End #total-estimate-section -->
                                      </div><!-- End .form-group -->
 
-                               
                             </div><!-- End #total-estimate-section -->
 
-
                             <div class="product_check" style="display: none;">
-                             <h5 style="padding: 10px ;background-color: rgba(255,0,0,0.73); border-radius: 5px;">None of Cart products are  Available in your selected Shop ! You can Book now.</h5>
+                             <h5 style="padding: 10px ;background-color: rgba(255,0,0,0.73); border-radius: 5px;">لا تتوفر أي من منتجات سلة التسوق في المتجر الذي اخترته! يمكنك الحجز الآن.</h5>
                             </div>
 
                             <div class="leak_product_msg" style="display: none;">
-                                <p style="padding: 10px ;background-color: #f7bec7; border-radius: 5px;">Opps ! All Card products  are not Available in this outlet at this moment .
-                                    <a href="#">  <strong id="product_name"></strong> </a> are/is out of stock. If you want ,  booking now otherwise remove this product from the Card.
+                                <p style="padding: 10px ;background-color: #f7bec7; border-radius: 5px;">عفوا! جميع منتجات البطاقات غير متوفرة في هذا المنفذ في الوقت الحالي .
+                                    <a href="#">  <strong id="product_name"></strong> </a> هي / غير متوفرة في المخزون. إذا كنت ترغب في ذلك ، قم بالحجز الآن وإلا قم بإزالة هذا المنتج من البطاقة.
 
                                 </p>
                             </div>
-
-
 
                             <input type="hidden" name="subtotal" id="subtotal" value="{{ $subtotal}}">
 
@@ -186,36 +176,26 @@
                             <div class="sellItem">
                                 <input type="hidden" name="sellItem" id="sellItem">
                             </div>
-
                             <table class="table table-totals">
                                 <tbody>
                                     <tr>
-                                        <td>Subtotal</td>
+                                        <td>المجموع الفرعي</td>
                                         <td>৳{{ $subtotal }}</td>
                                     </tr>
-
-                                    <!-- <tr>
-                                        <td>Tax</td>
-                                        <td>$0.00</td>
-                                    </tr> -->
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td>Order Total</td>
+                                        <td>الطلب الكلي</td>
                                         <td id="subtotal">৳{{ $subtotal }}</td>
                                     </tr>
                                 </tfoot>
                             </table>
 
-
-
                             <div class="checkout-methods">
-                                <button type="submit" class="btn btn-block btn-sm btn-primary" id="checkShippingid" >Go to Checkout</button>
-                               <!--  <a href="#" class="btn btn-link btn-block">Check Out with Multiple Addresses</a> -->
+                                <button type="submit" class="btn btn-block btn-sm btn-primary" id="checkShippingid" >اذهب إلى </button>
                             </div><!-- End .checkout-methods -->
                             <div class="booking" style="display: none">
-                                <button type="submit" class="btn btn-block btn-sm btn-warning" id="checkShippingid">Go to Booking</button>
-                                <!--  <a href="#" class="btn btn-link btn-block">Check Out with Multiple Addresses</a> -->
+                                <button type="submit" class="btn btn-block btn-sm btn-warning" id="checkShippingid">اذهب إلى الحجز</button>
                             </div><!-- End .checkout-methods -->
                             </form>
                             @endif
@@ -226,8 +206,6 @@
 
             <div class="mb-6"></div><!-- margin -->
         </main><!-- End .main -->
-
-
 
  <script src="<?php echo asset('public/assets/frontend/js/jquery.min.js') ?>"></script>
 
@@ -367,7 +345,7 @@
             $("#warehouse_id").hide();
             $("#hub_id").show();
         });
-        
+
         $('#outlet').click(function() {
             $("#hub_id").hide();
             $("#warehouse_id").show();

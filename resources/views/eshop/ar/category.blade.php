@@ -1,11 +1,11 @@
-@extends('layout.website')
+@extends('layout.ar_website')
 @section('home_content')
   <main class="main">
             <div class="banner banner-cat" style="background-image: url('{{ asset('/') }}public/assets/frontend/images/sliderbackground.png'); height: 215px;">
-                <div class="banner-content container">
+                <div class="banner-content container" >
                     <!-- <h2 class="banner-subtitle">check out over <span>200+</span></h2> -->
-                    <h1 class="banner-title">
-                        {{$cat_name->name}}
+                    <h1 class="banner-title"style="float: right">
+                        {{$cat_name->name_ar}}
                     </h1>
                     <!-- <a href="#" class="btn btn-dark">Shop Now</a> -->
                 </div><!-- End .banner-content -->
@@ -13,10 +13,12 @@
 
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container">
-                    <ol class="breadcrumb mt-0">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="#">Categories</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{$cat_name->name}}</li>
+                    <ol class="breadcrumb mt-0" style="float: right">
+                        <li class="breadcrumb-item active" aria-current="page">{{$cat_name->name_ar}}</li>
+
+                        <li class="breadcrumb-item"><a href="#">فئات</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('eshop.ar') }}"><i class="icon-home"></i></a></li>
+
                     </ol>
                 </div><!-- End .container -->
             </nav>

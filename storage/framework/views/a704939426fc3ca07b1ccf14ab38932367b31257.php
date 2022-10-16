@@ -212,11 +212,7 @@
          </div>
 
             <div class="container tag_product"  id="tag_product" style="display: -webkit-box; overflow-y:scroll;">
-
             </div>
-
-
-
 
             <!-- Skin care starts -->
             <div class="home-product-tabs" style="margin-top:50px;">
@@ -246,7 +242,7 @@
                            ?>
                         <div class="product-default">
                             <figure>
-                                <a href="<?php echo e(route('eshop-details',['id' => $row->id, 'name' => $name ])); ?>">
+                                <a href="<?php echo e(route('eshop-details.ar',['id' => $row->id, 'name' => $name ])); ?>">
                                     <img src="<?php echo e(url('public/images/product', $first_image)); ?>" alt="product" style="height: auto; width: auto; margin: auto;">
                                 </a>
                             </figure>
@@ -256,20 +252,22 @@
                                 ?>
                                 <?php if($brand_name): ?>
                                     <div class="cat-box">
-                                        <span  style="font-size: 13px;" class="product-cat"><?php echo e($brand_name->title); ?></span>
+                                        <span  style="font-size: 13px;" class="product-cat"><?php echo e($brand_name->title_ar); ?></span>
                                     </div><!-- End .price-box -->
                                 <?php endif; ?>
-                                
-                                
-                                    
-                                
-
                                 <h2 class="product-title">
-                                    <a href="<?php echo e(route('eshop-details',['id' => $row->id, 'name' => $name ])); ?>" ><?php echo e($row->name); ?></a>
+                                    <a href="<?php echo e(route('eshop-details.ar',['id' => $row->id, 'name' => $name ])); ?>" ><?php echo e($row->name_ar); ?></a>
                                 </h2>
 
                                 <div class="price-box">
-                                    <?php if($row->promotion == null): ?>
+                                    <?php if($row->promotion == null): ?>cmd
+
+
+
+
+
+
+
                                         <span class="product-price">৳<?php echo e($row->price); ?></span>
                                     <?php else: ?>
                                         <span class="old-price">৳<?php echo e($row->price); ?></span>
@@ -309,17 +307,17 @@
                                     <div class="product-action">
                                         <form action="" method="">
                                             <?php if(Auth::user() == null): ?>
-                                                <a href="<?php echo e(route('eshop-wishlist-login-check', $row->id)); ?>" class="paction add-wishlist" title="Add to Wishlist"></a>
+                                                <a href="<?php echo e(route('eshop-wishlist-login-check.ar', $row->id)); ?>" class="paction add-wishlist" title="Add to Wishlist"></a>
                                             <?php else: ?>
-                                                <a href="<?php echo e(route('eshop-wishlist', $row->id)); ?>" class="paction add-wishlist" title="Add to Wishlist" ></a>
+                                                <a href="<?php echo e(route('eshop-wishlist.ar', $row->id)); ?>" class="paction add-wishlist" title="Add to Wishlist" ></a>
                                             <?php endif; ?>
                                         </form>
-                                          <form action="<?php echo e(route('add-to-cart', $row->id)); ?>" method="POST">
+                                          <form action="<?php echo e(route('add-to-cart.ar', $row->id)); ?>" method="POST">
                                           <?php echo csrf_field(); ?>
                                          <?php if($row->qty > 0 ): ?>
                                           <button type="submit" class="btn-icon btn-add-cart"><i class="icon-bag"></i>أضف إلى السلة</button>
                                          <?php else: ?>
-                                         <a href="<?php echo e(route('eshop-details',['id' => $row->id, 'name' => $name ])); ?>" class="btn-add-cart paction"><i class="fa fa-eye" aria-hidden="true"></i> عرض التفاصيل</a>
+                                         <a href="<?php echo e(route('eshop-details.ar',['id' => $row->id, 'name' => $name ])); ?>" class="btn-add-cart paction"><i class="fa fa-eye" aria-hidden="true"></i> عرض التفاصيل</a>
                                          <?php endif; ?>
                                             <input type="hidden" name="product_price" value="<?php echo e($row->price); ?>">
                                             <input type="hidden" name="promotion_price" value="<?php echo e($row->promotion_price); ?>">
@@ -344,16 +342,14 @@
                             <div class="new-products owl-carousel owl-theme">
                                 <?php $__currentLoopData = $skin_products_arrivals; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php
-
                                         $name =  str_replace(' ', '-', $row->name);
                                            $image =  $row->image;
                                            $image = explode(',',$image);
                                            $first_image = $image[0];
-
                                     ?>
                                     <div class="product-default">
                                         <figure>
-                                            <a href=" <?php echo e(route('eshop-details',['id' => $row->id, 'name' => $name ])); ?>">
+                                            <a href=" <?php echo e(route('eshop-details.ar',['id' => $row->id, 'name' => $name ])); ?>">
                                                 <img src="<?php echo e(url('public/images/product', $first_image)); ?>" alt="product" style="height: auto; width: auto; margin: auto;">
                                             </a>
                                         </figure>
@@ -363,12 +359,12 @@
                                             ?>
                                             <?php if($brand_name): ?>
                                             <div class="cat-box">
-                                                <span  style="font-size: 13px;" class="product-cat"><?php echo e($brand_name->title); ?></span>
+                                                <span  style="font-size: 13px;" class="product-cat"><?php echo e($brand_name->title_ar); ?></span>
                                             </div><!-- End .price-box -->
                                             <?php endif; ?>
 
                                             <h2 class="product-title">
-                                                <a href=" <?php echo e(route('eshop-details',['id' => $row->id, 'name' => $name ])); ?>" ><?php echo e($row->name); ?></a>
+                                                <a href=" <?php echo e(route('eshop-details.ar',['id' => $row->id, 'name' => $name ])); ?>" ><?php echo e($row->name_ar); ?></a>
                                             </h2>
                                             <div class="price-box">
                                                 <?php if($row->promotion == null): ?>
@@ -410,9 +406,9 @@
                                             <div class="product-action">
                                                 <form action="" method="">
                                                     <?php if(Auth::user() == null): ?>
-                                                        <a href="<?php echo e(route('eshop-wishlist-login-check', $row->id)); ?>" class="paction add-wishlist" title="Add to Wishlist"></a>
+                                                        <a href="<?php echo e(route('eshop-wishlist-login-check.ar', $row->id)); ?>" class="paction add-wishlist" title="Add to Wishlist"></a>
                                                     <?php else: ?>
-                                                        <a href="<?php echo e(route('eshop-wishlist', $row->id)); ?>" class="paction add-wishlist" title="Add to Wishlist" ></a>
+                                                        <a href="<?php echo e(route('eshop-wishlist.ar', $row->id)); ?>" class="paction add-wishlist" title="Add to Wishlist" ></a>
                                                     <?php endif; ?>
                                                 </form>
                                                 <form action="<?php echo e(route('add-to-cart', $row->id)); ?>" method="POST">
@@ -420,7 +416,7 @@
                                                     <?php if($row->qty > 0 ): ?>
                                                         <button type="submit" class="btn-icon btn-add-cart"><i class="icon-bag"></i>ADD TO CART</button>
                                                     <?php else: ?>
-                                                        <a href=" <?php echo e(route('eshop-details',['id' => $row->id, 'name' => $name ])); ?>" class="btn-add-cart paction"><i class="fa fa-eye" aria-hidden="true"></i> View Details</a>
+                                                        <a href=" <?php echo e(route('eshop-details.ar',['id' => $row->id, 'name' => $name ])); ?>" class="btn-add-cart paction"><i class="fa fa-eye" aria-hidden="true"></i> View Details</a>
                                                     <?php endif; ?>
                                                     <input type="hidden" name="product_price" value="<?php echo e($row->price); ?>">
                                                     <input type="hidden" name="promotion_price" value="<?php echo e($row->promotion_price); ?>">
@@ -480,7 +476,7 @@
                                 <button type="button" class="close mobile_close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 <br>
                                 <div class="product-single-details">
-                                    <h1 class="product-title"><?php echo e($product_details_info->name); ?> </h1>
+                                    <h1 class="product-title"><?php echo e($product_details_info->name_ar); ?> </h1>
                                     <?php
                                            $comments = \App\Review::where('product_id',$product_details_info->id)->where('comment' ,'!=', null)->orderBy('id','DESC')->get();
                                             $full_rating = 0 ;
@@ -522,23 +518,23 @@
                                     </div><!-- End .product-desc -->
 
 
-                                    <form action="<?php echo e(route('add-to-cart', $product_details_info->id)); ?>" method="POST">
+                                    <form action="<?php echo e(route('add-to-cart.ar', $product_details_info->id)); ?>" method="POST">
                                     <?php echo csrf_field(); ?>
                                     <div class="product-action">
                                         <?php if($product_details_info->qty > 0 ): ?>
-                                        <button type="submit" class="paction add-cart" title="Add to Cart"><span>Add to Cart</span></button>
+                                        <button type="submit" class="paction add-cart" title="Add to Cart"><span>أضف إلى السلة</span></button>
                                         <?php else: ?>
-                                            <a href="<?php echo e(route('eshop-details',['id' => $product_details_info->id, 'name' => $name ])); ?>" class="btn-add-cart paction"><i class="fa fa-eye" aria-hidden="true"></i> View Details</a>
+                                            <a href="<?php echo e(route('eshop-details.ar',['id' => $product_details_info->id, 'name' => $name ])); ?>" class="btn-add-cart paction"><i class="fa fa-eye" aria-hidden="true"></i> عرض التفاصيل</a>
                                         <?php endif; ?>
 
                                         <input type="hidden" name="product_price" value="<?php echo e($product_details_info->price); ?>">
 
                                         <?php if(Auth::user() == null): ?>
-                                        <a href="<?php echo e(route('eshop-wishlist-login-check', $product_details_info->id)); ?>" class="paction add-wishlist" title="Add to Wishlist">
+                                        <a href="<?php echo e(route('eshop-wishlist-login-check.ar', $product_details_info->id)); ?>" class="paction add-wishlist" title="Add to Wishlist">
 
                                         </a>
                                         <?php else: ?>
-                                            <a href="<?php echo e(route('eshop-wishlist', $product_details_info->id)); ?>" class="paction add-wishlist" title="Add to Wishlist" ></a>
+                                            <a href="<?php echo e(route('eshop-wishlist.ar', $product_details_info->id)); ?>" class="paction add-wishlist" title="Add to Wishlist" ></a>
                                         <?php endif; ?>
                                        </div><!-- End .product-action -->
                                    </form>
@@ -556,10 +552,6 @@
                 </div>
             </div>
         <?php endif; ?>
-
-
-
-
             <div class="company-section">
                 <div class="container">
                     <div class="row align-items-lg-center">
@@ -584,7 +576,7 @@
                                  <?php $__currentLoopData = $blog; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                      <article class="entry">
                                     <div class="entry-media">
-                                        <a href="<?php echo e(route('blog-post', $row->id)); ?>">
+                                        <a href="<?php echo e(route('blog-post.ar', $row->id)); ?>">
                                             <img src="http://223.27.94.123/kosmetica/<?php echo e($row->blog_image); ?>" alt="Post">
                                         </a>
                                     </div><!-- End .entry-media -->
@@ -596,13 +588,13 @@
                                         </div><!-- End .entry-date -->
 
                                         <h2 class="entry-title">
-                                            <a href="<?php echo e(route('blog-post', $row->id)); ?>"><?php echo e($row->blog_title); ?></a>
+                                            <a href="<?php echo e(route('blog-post.ar', $row->id)); ?>"><?php echo e($row->blog_title_ar); ?></a>
                                         </h2>
 
                                         <div class="entry-content">
-                                            <p><?php echo e(\Illuminate\Support\Str::limit($row->blog, 250, '..........')); ?></p>
+                                            <p><?php echo e(\Illuminate\Support\Str::limit($row->blog_ar, 250, '..........')); ?></p>
 
-                                            <a href="<?php echo e(route('blog-post', $row->id)); ?>" class="read-more">اقرأ أكثر <i class="icon-angle-double-right"></i></a>
+                                            <a href="<?php echo e(route('blog-post.ar', $row->id)); ?>" class="read-more">اقرأ أكثر <i class="icon-angle-double-right"></i></a>
                                         </div><!-- End .entry-content -->
                                     </div><!-- End .entry-body -->
                                 </article>
@@ -721,7 +713,6 @@
 
              });
 
-
   /// Ingredients Product
              $(".ingredientdata").on("click", function(){
                  var tag_id = $(this).data("id");
@@ -797,8 +788,6 @@
                  });
 
              });
-
-
 
              /// Skin Product
              $(".skinprodata").on("click", function(){

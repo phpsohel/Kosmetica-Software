@@ -1,37 +1,38 @@
-@extends('layout.website')
+@extends('layout.ar_website')
 @section('home_content')
 <style>
    @media  screen and (max-width: 600px) {
           .banner-cat {
             width:100%;
             height:140px !important;
-            
+
             }
         }
         .banner.banner-cat {
-        
+
             height:450px;
         }
     .sidebar-shop{
         display: block !important;
     }
-        
+
 </style>
   <main class="main">
       <div class="banner banner-cat" style="background-image: url('{{ asset('/') }}public/images/brand/{{$brand_name->image}}');  height: 450px; max-width:1200px; margin:auto;">
                 <div class="banner-content container">
                     <!-- <h2 class="banner-subtitle">check out over <span>200+</span></h2> -->
-                   
+
                     <!-- <a href="#" class="btn btn-dark">Shop Now</a> -->
                 </div><!-- End .banner-content -->
             </div><!-- End .banner -->
 
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container">
-                    <ol class="breadcrumb mt-0">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="#">Brands</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"> Others</li>
+                    <ol class="breadcrumb mt-0" style="float: right">
+                        <li class="breadcrumb-item active" aria-current="page"> آحرون</li>
+                        <li class="breadcrumb-item"><a href="#">العلامات التجارية</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('eshop.ar') }}"><i class="icon-home"></i></a></li>
+
                     </ol>
                 </div><!-- End .container -->
             </nav>
@@ -47,18 +48,13 @@
                     @endphp
 
                     <div class="sidebar-shop col-lg-2" style="line-height: 25px;">
-                        <h4><strong style="color:black">Others Brand</strong></h4>
+                        <h4><strong style="color:black">ماركة أخرى</strong></h4>
                         <ul>
                             @foreach($others_brand as $brand)
-                                <li><a href="{{ route('brands-product',$brand->id) }}"><strong> {{ $brand->title }}</strong></a></li>
+                                <li><a href="{{ route('brands-product',$brand->id) }}"><strong> {{ $brand->title_ar }}</strong></a></li>
                             @endforeach
                         </ul>
-
-
                     </div><!-- End .widget -->
-
-
-
                     <div class="col-lg-10">
                          <nav class="toolbox" style="display:none;">
                             <div class="toolbox-left">
@@ -95,7 +91,7 @@
                             <div class="col-6 col-md-4 col-lg-3 col-xl-3">
                                 <div class="product-default">
                                     <figure>
-                                        <a href="{{ route('eshop-detail', $row->pid) }}">
+                                        <a href="{{ route('eshop-detail.ar', $row->pid) }}">
                                             <img src="{{ url('public/images/product',$first_image) }}" alt="product" style="height: auto; width: auto; margin: auto;">
                                         </a>
                                     </figure>
@@ -103,10 +99,10 @@
 
                                         <div class="price-box" style="display: inline-flex;margin-bottom: 5px;">
 
-                                            <span class="product-title">{{ $row->title }}</span>
+                                            <span class="product-title">{{ $row->title_ar }}</span>
                                         </div><!-- End .price-box -->
                                         <h2 class="product-title">
-                                            <a href="{{ route('eshop-detail', $row->pid) }}">{{ $row->name }}</a>
+                                            <a href="{{ route('eshop-detail.ar', $row->pid) }}">{{ $row->name_ar }}</a>
                                         </h2>
 
                                         <div class="price-box">
@@ -147,21 +143,21 @@
                                                 <span><i class="fa fa-star-o" style="font-size:18px"></i></span>
                                             @endfor
                                         </div>
-                                   
+
                                         <div class="product-action">
                                             <form action="" method="">
                                                 @if(Auth::user() == null)
-                                                    <a href="{{ route('eshop-wishlist-login-check', $row->pid) }}" class="paction add-wishlist" title="Add to Wishlist"></a>
+                                                    <a href="{{ route('eshop-wishlist-login-check.ar', $row->pid) }}" class="paction add-wishlist" title="Add to Wishlist"></a>
                                                 @else
-                                                    <a href="{{ route('eshop-wishlist', $row->pid) }}" class="paction add-wishlist" title="Add to Wishlist" ></a>
+                                                    <a href="{{ route('eshop-wishlist.ar', $row->pid) }}" class="paction add-wishlist" title="Add to Wishlist" ></a>
                                                 @endif
                                             </form>
-                                            <form action="{{ route('add-to-cart', $row->pid) }}" method="POST">
+                                            <form action="{{ route('add-to-cart.ar', $row->pid) }}" method="POST">
                                                 @csrf
                                                 @if($row->qty > 0 )
                                                     <button type="submit" class="btn-icon btn-add-cart"><i class="icon-bag"></i>ADD TO CART</button>
                                                 @else
-                                                    <a href="{{ route('eshop-detail', $row->pid) }}" class="btn-add-cart paction"><i class="fa fa-eye" aria-hidden="true"></i> View Details</a>
+                                                    <a href="{{ route('eshop-detail.ar', $row->pid) }}" class="btn-add-cart paction"><i class="fa fa-eye" aria-hidden="true"></i> View Details</a>
                                                 @endif
                                                 <input type="hidden" name="product_price" value="{{ $row->price}}">
                                                 <input type="hidden" name="promotion_price" value="{{ $row->promotion_price}}">
@@ -284,17 +280,17 @@
                                               @if($product_details_info->qty > 0 )
                                                   <button type="submit" class="paction add-cart" title="Add to Cart"><span>Add to Cart</span></button>
                                               @else
-                                                  <a href="{{ route('eshop-detail', $product_details_info->id) }}" class="btn-add-cart paction"><i class="fa fa-eye" aria-hidden="true"></i> View Details</a>
+                                                  <a href="{{ route('eshop-detail.ar', $product_details_info->id) }}" class="btn-add-cart paction"><i class="fa fa-eye" aria-hidden="true"></i> View Details</a>
                                               @endif
 
                                               <input type="hidden" name="product_price" value="{{ $product_details_info->price}}">
 
                                               @if(Auth::user() == null)
-                                                  <a href="{{ route('eshop-wishlist-login-check', $product_details_info->id) }}" class="paction add-wishlist" title="Add to Wishlist">
+                                                  <a href="{{ route('eshop-wishlist-login-check.ar', $product_details_info->id) }}" class="paction add-wishlist" title="Add to Wishlist">
 
                                                   </a>
                                               @else
-                                                  <a href="{{ route('eshop-wishlist', $product_details_info->id) }}" class="paction add-wishlist" title="Add to Wishlist" ></a>
+                                                  <a href="{{ route('eshop-wishlist.ar', $product_details_info->id) }}" class="paction add-wishlist" title="Add to Wishlist" ></a>
                                               @endif
                                           </div><!-- End .product-action -->
                                       </form>

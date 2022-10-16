@@ -18,23 +18,23 @@
     <main class="main">
         <div class="banner banner-cat" style="background-image: url('{{ asset('/') }}public/assets/frontend/images/minishop.jpg');">
             <div class="banner-content container">
-                <!-- <h2 class="banner-subtitle">check out over <span>200+</span></h2> -->
-
-                <!-- <a href="#" class="btn btn-dark">Shop Now</a> -->
             </div><!-- End .banner-content -->
         </div><!-- End .banner -->
 
         <nav aria-label="breadcrumb" class="breadcrumb-nav">
             <div class="container">
-                <ol class="breadcrumb mt-0">
+                <ol class="breadcrumb mt-0" style="float: right">
+                    <li class="breadcrumb-item active" aria-current="page">متجر صغير</li>
+                    <li class="breadcrumb-item"><a href="#">شعر الجسم</a></li>
                     <li class="breadcrumb-item"><a href="#"><i class="icon-home"></i></a></li>
-                    <li class="breadcrumb-item"><a href="#">Body & Hair</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">mini-shop</li>
                 </ol>
             </div><!-- End .container -->
         </nav>
 
         <div class="container">
+            <br>
+            <br>
+            <br>
             <div class="row">
                 <div class="col-lg-12">
                     <nav class="toolbox" style="display:none;">
@@ -51,7 +51,7 @@
                                     </select>
                                 </div><!-- End .select-custom -->
 
-                                <a href="#" class="sorter-btn" title="Set Ascending Direction"><span class="sr-only">Set Ascending Direction</span></a>
+                                <a href="#" class="sorter-btn" title="Set Ascending Direction"><span class="sr-only">حدد الاتجاه التصاعدي</span></a>
                             </div><!-- End .toolbox-item -->
                         </div><!-- End .toolbox-left -->
 
@@ -74,20 +74,20 @@
                             <div class="col-6 col-md-4 col-lg-3 col-xl-3">
                                 <div class="product-default">
                                     <figure>
-                                        <a href="{{ route('eshop-details',['id' => $row->id, 'name' => $name ]) }}">
+                                        <a href="{{ route('eshop-details.ar',['id' => $row->id, 'name' => $name ]) }}">
                                             <img src="{{ url('public/images/product', $first_image) }}" alt="product" style="height: auto; width: auto; margin: auto;">
                                         </a>
                                     </figure>
                                     <div class="product-details">
                                         <div class="price-box" style="display: inline-flex;margin-bottom: 5px;">
                                             @if($row->brand->title != null)
-                                                <span class="product-details">{{ $row->brand->title }}</span>
+                                                <span class="product-details">{{ $row->brand->title_ar }}</span>
                                             @endif
 
                                         </div><!-- End .price-box -->
 
                                         <h2 class="product-title">
-                                            <a  href="{{ route('eshop-details',['id' => $row->id, 'name' => $name ]) }}">{{ $row->name }}</a>
+                                            <a  href="{{ route('eshop-details.ar',['id' => $row->id, 'name' => $name ]) }}">{{ $row->name_ar }}</a>
                                         </h2>
 
                                         <div class="price-box">

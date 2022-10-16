@@ -14,15 +14,84 @@
 //home page
 //Route::mix('/eshop/', 'WebsiteController@index')->name('eshop');
 
-
 // Arabic Website routes starts
 Route::match(array('GET','POST'),'/eshop/ar/', 'ArWebsiteController@index')->name('eshop.ar');
+
 Route::get('/eshop/ar/offer/', 'arWebsiteController@offer')->name('eshop-offer.ar');
+
+Route::get('/eshop/ar/getcurrency', 'arWebsiteController@getcurrency')->name('getcurrency.ar');
+
 Route::get('/eshop/ar/right/now', 'arWebsiteController@right_now')->name('right.now.ar');
+
+Route::get('/eshop/ar/mini-shop/', 'arWebsiteController@mini_shop')->name('eshop-mini-shop.ar');
+//blog post
+Route::get('/eshop/ar/blog-post/{id}/', 'arWebsiteController@blog_post')->name('blog-post.ar');
 Route::get('/eshop/ar/blogs/', 'arWebsiteController@blogs')->name('eshop-blogs.ar');
 Route::get('/eshop/ar/mini-shop/', 'arWebsiteController@mini_shop')->name('eshop-mini-shop.ar');
-Route::get('/eshop/ar/contact/', 'ArWebsiteController@contact')->name('contact.ar');
+Route::post('/eshop/ar/mini-shop/quick', 'arWebsiteController@mini_shop_quick')->name('eshop-mini-shop-quick.ar');
+Route::get('/eshop/ar/contact/', 'arWebsiteController@contact')->name('contact.ar');
+//brands
+Route::get('/eshop/ar/brands/{id}/{category_id}', 'arWebsiteController@brands')->name('eshop-brands.ar');
+Route::get('/eshop/ar/brands-product/{id}/', 'arWebsiteController@brands_product')->name('brands-product.ar');
+Route::get('/eshop/ar/brands-product_name/{id}/{name}/', 'arWebsiteController@brands_product_name')->name('brands-product_name.ar');
+Route::post('/eshop/ar/brands-product/', 'arWebsiteController@brands_product_quick')->name('brands-product-quick.ar');
+Route::get('/eshop/ar/brands-product-other/', 'arWebsiteController@brands_product_other')->name('brands-product-other.ar');
+//Products
+Route::get('/eshop/ar/tag_product/{id}', 'arWebsiteController@tagwise_product')->name('tag-product.ar');
+Route::get('/eshop/ar/tag_product_name/{id}/{name}', 'arWebsiteController@tagwise_product_name')->name('tag-product_name.ar');
+Route::get('/eshop/ar/category-product_name/{id}/{name}', 'arWebsiteController@category_product_name')->name('category-product_name.ar');
+Route::get('/eshop/ar/category-product/{id}', 'arWebsiteController@category_product')->name('category-product.ar');
+Route::get('/eshop/ar/category-product_name_hair_scalp/{id}/{name}', 'arWebsiteController@category_product_name_hair_scalp')->name('category-product__name_hair_scalp.ar');
+//category
+Route::get('/eshop/ar/all-categories/{id}', 'arWebsiteController@category')->name('all-categories.ar');
+//Product Details
+Route::get('/eshop/ar/detail/{id}', 'arWebsiteController@detail')->name('eshop-detail.ar');
+Route::get('/eshop/ar/detail_name/{name}', 'arWebsiteController@detail_name')->name('eshop-detail_name.ar');
+Route::get('/eshop/ar/details/{id}/{name}', 'arWebsiteController@details')->name('eshop-details.ar');
 
+Route::post('/eshop/ar/detail/quick', 'arWebsiteController@detail_quick')->name('eshop-detail-quick.ar');
+Route::get('/eshop/ar/wishlist_login/{id}', 'arWebsiteController@wishlist_login_check')->name('eshop-wishlist-login-check.ar');
+Route::get('/eshop/ar/quick-view/{id}', 'arWebsiteController@quick_view')->name('eshop-quick-view.ar');
+Route::get('/eshop/ar/wishlist/{id}', 'arWebsiteController@wishlist')->name('eshop-wishlist.ar');
+//Wishlist
+Route::get('/eshop/ar/my_wishlist/', 'arWebsiteController@my_wishlist')->name('my_wishlist.ar');
+//cart add
+Route::post('/eshop/ar/cart/{id}', 'arWebsiteController@add_to_cart')->name('add-to-cart.ar');
+//view cart
+Route::get('/eshop/ar/cart-page', 'arWebsiteController@cart_page')->name('cart-page.ar');
+// cart add from detail with quantity
+Route::post('/ar/add-cart-quantity/{id}', 'arWebsiteController@add_cart_quantity')->name('add-cart-quantity.ar');
+//checkout page
+Route::post('/eshop/ar/checkout/{user_ip}', 'arWebsiteController@checkout')->name('checkout.ar');
+
+Route::get('/eshop/checkout-check/', 'WebsiteController@checkoutCheck')->name('checkout.check');
+Route::get('/eshop/cart-order-booking/', 'WebsiteController@cartOrderBooking')->name('cart-order-booking');
+Route::get('/eshop/shipping-cost/', 'WebsiteController@shipping_cost')->name('shipping.cost');
+Route::get('/eshop/shipping_warwehouse-cost/', 'WebsiteController@shipping_warwehouse')->name('shipping_warwehouse.cost');
+Route::get('/eshop/get-area/', 'WebsiteController@get_area')->name('get_area');
+//cart quantity update
+Route::post('/ar/cart-quantity-update/{id}', 'arWebsiteController@cart_quantity_update')->name('cart-quantity-update.ar');
+//checkout page
+Route::post('/eshop/ar/checkout/{user_ip}', 'arWebsiteController@checkout')->name('checkout.ar');
+
+Route::get('/eshop/ar/checkout-check/', 'arWebsiteController@checkoutCheck')->name('checkout.check.ar');
+Route::get('/eshop/cart-order-booking/', 'WebsiteController@cartOrderBooking')->name('cart-order-booking');
+Route::get('/eshop/shipping-cost/', 'WebsiteController@shipping_cost')->name('shipping.cost');
+Route::get('/eshop/shipping_warwehouse-cost/', 'WebsiteController@shipping_warwehouse')->name('shipping_warwehouse.cost');
+Route::get('/eshop/get-area/', 'WebsiteController@get_area')->name('get_area');
+//search
+Route::post('/eshop/ar/search/', 'arWebsiteController@search')->name('search.ar');
+Route::post('/eshop/ar/search/quick/{id}', 'arWebsiteController@search_quick')->name('eshop.search_quick.ar');
+//login
+Route::get('/eshop/ar/login/', 'arWebsiteController@login')->name('eshop-login.ar');
+//Route::post('/eshop/ar/login/', 'LoginController@login')->name('eshop-post-login');
+//login
+Route::get('/eshop/ar/wishlist_login/{id}', 'arWebsiteController@wishlist_login_check')->name('eshop-wishlist-login-check.ar');
+Route::get('/eshop/ar/wishlist/{id}', 'arWebsiteController@wishlist')->name('eshop-wishlist.ar');
+//cart destroy
+Route::get('/ar/cart-destroy/{id}', 'arWebsiteController@cart_destroy')->name('cart-destroy.ar');
+//cart destroy
+Route::get('/ar/cart-destroy-master/{id}', 'arWebsiteController@cart_destroy_master')->name('cart-destroy-master.ar');
 // Arabic Website routes ends
 
 
@@ -40,7 +109,6 @@ Route::get('/eshop/details/{id}/{name}', 'WebsiteController@details')->name('esh
 
 Route::post('/eshop/detail/quick', 'WebsiteController@detail_quick')->name('eshop-detail-quick');
 Route::get('/eshop/wishlist_login/{id}', 'WebsiteController@wishlist_login_check')->name('eshop-wishlist-login-check');
-//Route::get('/eshop/eshop-quick-view-check/{id}', 'WebsiteController@quick_view_check')->name('eshop-quick-view_check');
 Route::get('/eshop/quick-view/{id}', 'WebsiteController@quick_view')->name('eshop-quick-view');
 Route::get('/eshop/wishlist/{id}', 'WebsiteController@wishlist')->name('eshop-wishlist');
 
@@ -104,12 +172,8 @@ Route::get('/eshop/category-product_name/{id}/{name}', 'WebsiteController@catego
 
 Route::post('/eshop/category-product-quick/{id}', 'WebsiteController@category_product_quick')->name('category-product.quick');
 
-
 Route::get('/eshop/tag_product/{id}', 'WebsiteController@tagwise_product')->name('tag-product');
 Route::get('/eshop/tag_product_name/{id}/{name}', 'WebsiteController@tagwise_product_name')->name('tag-product_name');
-
-
-
 
 Route::get('/eshop/category-product_hair_scalp/{id}', 'WebsiteController@category_product_hair_scalp')->name('category-product_hair_scalp');
 Route::get('/eshop/category-product_name_hair_scalp/{id}/{name}', 'WebsiteController@category_product_name_hair_scalp')->name('category-product__name_hair_scalp');

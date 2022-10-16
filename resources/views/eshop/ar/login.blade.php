@@ -1,42 +1,46 @@
-@extends('layout.website')
+@extends('layout.ar_website')
 @section('home_content')
 <main class="main">
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Login</li>
+                    <ol class="breadcrumb" style="float: right">
+                        <li class="breadcrumb-item active" aria-current="page">تسجيل الدخول</li>
+                        <li class="breadcrumb-item"><a href="{{ route('eshop.ar') }}"><i class="icon-home"></i></a></li>
+
                     </ol>
                 </div><!-- End .container -->
             </nav>
 
             <div class="container">
+                <br>
+                <br>
+                <br>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="heading">
-                            <h2 class="title">Login</h2>
-                            <p>If you have an account with us, please log in.</p>
+                            <h2 class="title">تسجيل الدخول</h2>
+                            <p>إذا كان لديك حساب معنا ، يرجى تسجيل الدخول.</p>
                         </div><!-- End .heading -->
                          @include('includes.message')
                          <form method="POST" action="{{ route('eshop-post-login') }}" id="login-form">
                          @csrf
                             <!-- <input type="email" class="form-control" placeholder="Email Address" required> -->
-                             <input id="login-username" type="text" name="name" required class="form-control" placeholder="User Name">
+                             <input id="login-username" type="text" name="name" required class="form-control" placeholder="اسم االمستخدم">
 
                             <!-- <input type="password" class="form-control" placeholder="Password" required> -->
 
-                             <input id="login-password" type="password" name="password" required class="form-control" value="" placeholder="Password">
+                             <input id="login-password" type="password" name="password" required class="form-control" value="" placeholder="كلمة المرور">
                             <div class="form-footer">
-                                <button type="submit" class="btn btn-primary">LOGIN</button>
-                                <a href="{{ route('password.request') }}" class="forget-pass"> Forgot your password?</a>
+                                <button type="submit" class="btn btn-primary">تسجيل الدخول</button>
+                                <a href="{{ route('password.request') }}" class="forget-pass"> نسيت رقمك السري؟</a>
                             </div><!-- End .form-footer -->
                         </form>
                     </div><!-- End .col-md-6 -->
 
                     <div class="col-md-6">
                         <div class="heading">
-                            <h2 class="title">Create An Account</h2>
-                            <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+                            <h2 class="title">إذا كان لديك حساب معنا ، يرجى تسجيل الدخول.</h2>
+                            <p>من خلال إنشاء حساب في متجرنا ، ستتمكن من التنقل خلال عملية الدفع بشكل أسرع ، وتخزين عناوين شحن متعددة ، وعرض وتتبع طلباتك في حسابك والمزيد.</p>
                         </div><!-- End .heading -->
 
                         <form method="POST" action="{{ route('eshop-post-register') }}">
@@ -53,13 +57,13 @@
 
 
                             <div class="form-group-material">
-                                <input id="customer-name" type="text" name="customer_name" class="form-control customer-field" placeholder="Customer Name">
+                                <input id="customer-name" type="text" name="customer_name" class="form-control customer-field" placeholder="اسم الزبون">
 
                             </div>
 
-                            <input id="register-email" type="email" name="email" class="form-control" placeholder="Email Address" required>
+                            <input id="register-email" type="email" name="email" class="form-control" placeholder="عنوان البريد الالكترونى" required>
 
-                            <input id="register-phone" type="text" name="phone_number" class="form-control" placeholder="Phone Number" required>
+                            <input id="register-phone" type="text" name="phone_number" class="form-control" placeholder="رقم الهاتف" required>
 
                             <input id="register-company" type="hidden" name="company_name" class="form-control" value="None">
 
@@ -85,12 +89,12 @@
                             </div>
 
                             <div class="form-group-material">
-                                <input id="customer-address" type="text" name="address" class="form-control customer-field" placeholder="Address">
+                                <input id="customer-address" type="text" name="address" class="form-control customer-field" placeholder="تبوك">
 
                             </div>
 
                             <div class="form-group-material">
-                                <input id="customer-city" type="text" name="city" class="form-control customer-field" placeholder="City">
+                                <input id="customer-city" type="text" name="city" class="form-control customer-field" placeholder="مدينة">
 
                             </div>
 
@@ -126,16 +130,16 @@
                             </div>
 
 
-                            <input id="register-username" type="text" name="name" class="form-control" placeholder="User Name" required>
+                            <input id="register-username" type="text" name="name" class="form-control" placeholder="اسم االمستخدم" required>
 
-                            <input id="password" type="password" name="password" class="form-control" placeholder="Password" required>
+                            <input id="password" type="password" name="password" class="form-control" placeholder="كلمة المرور" required>
 
-                            <input id="password-confirm" type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>
+                            <input id="password-confirm" type="password" name="password_confirmation" class="form-control" placeholder="تأكيد كلمة المرور" required>
 
 
 
                             <div class="form-footer">
-                                <button type="submit" class="btn btn-primary">Create Account</button>
+                                <button type="submit" class="btn btn-primary">إصنع حساب</button>
                             </div><!-- End .form-footer -->
                         </form>
                     </div><!-- End .col-md-6 -->

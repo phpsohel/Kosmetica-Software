@@ -1,6 +1,5 @@
-@extends('layout.website')
+@extends('layout.ar_website')
 @section('home_content')
-
     @if(Auth::user())
         @php
             $customer = App\Customer::orderBy('customers.id', 'ASC')->where('users.role_id', '=', Auth::user()->role_id)->where('customers.user_id', '=', Auth::user()->id)->join('users', 'users.id', '=', 'customers.user_id')->first();
@@ -9,51 +8,50 @@
     <main class="main">
         <nav aria-label="breadcrumb" class="breadcrumb-nav">
             <div class="container">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+                <ol class="breadcrumb" style="float: right">
+                    <li class="breadcrumb-item active" aria-current="page">الدفع</li>
+                    <li class="breadcrumb-item"><a href="{{route('eshop.ar')}}"><i class="icon-home"></i></a></li>
                 </ol>
             </div><!-- End .container -->
         </nav>
         <div class="container">
             @if(!Auth::check())
                 <div>
-                    <h4>Already  Registered ?
-                        <a href="{{ route('eshop-login') }}">click here to login</a>
+                    <h4>مسجل بالفعل؟
+                        <a href="{{ route('eshop-login') }}">انقر هنا لتسجيل الدخول</a>
                     </h4>
                 </div>
                 <br>
             @endif
-
             <div class="row">
                 <div class="col-lg-8">
                     <ul class="checkout-steps">
                         <li>
-                            <h2 class="step-title">Customer's Information</h2>
+                            <h2 class="step-title">معلومات العميل</h2>
                             <form action="{{ route('place-order') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="user_ip" value="{{ request()->ip() }}">
                                 @if(Auth::user())
                                     <div class="form-group required-field">
-                                        <label>Full Name </label>
+                                        <label>الاسم الكامل</label>
                                         <input type="text" class="form-control" name="name" required value="{{ Auth::user()->name }}">
                                     </div><!-- End .form-group -->
                                 @endif
                                 @if(!Auth::user())
                                     <div class="form-group required-field">
-                                        <label>Full Name </label>
+                                        <label>الاسم الكامل</label>
                                         <input type="text" class="form-control" name="name" required>
                                     </div><!-- End .form-group -->
                                 @endif
                                 @if(Auth::user())
                                     <div class="form-group required-field">
-                                        <label>Email </label>
+                                        <label>البريد الإلكتروني </label>
                                         <input type="text" class="form-control" name="email" value="{{ Auth::user()->email }}" required>
                                     </div><!-- End .form-group -->
                                 @endif
                                 @if(!Auth::user())
                                     <div class="form-group required-field">
-                                        <label>Email </label>
+                                        <label>البريد الإلكتروني </label>
                                         <input type="text" class="form-control" name="email" required>
                                     </div><!-- End .form-group -->
                                 @endif
@@ -61,7 +59,7 @@
 
                                 @if(Auth::user())
                                     <div class="form-group required-field">
-                                        <label>Phone Number </label>
+                                        <label>رقم الهاتف </label>
                                         <div class="form-control-tooltip">
                                             <input type="number" class="form-control" name="phone_number" required value="{{ Auth::user()->phone }}">
                                             <span class="input-tooltip" data-toggle="tooltip" title="For delivery questions." data-placement="right"><i class="icon-question-circle"></i></span>
@@ -84,25 +82,16 @@
                                 @if(Auth::user())
                                     {{--@if(Auth::user()->role_id == 5)--}}
                                         <div class="form-group required-field">
-                                            <label>Address </label>
+                                            <label>تبوك </label>
                                             <input type="text" class="form-control" name="address" required value="{{ $customer->address }}">
 
                                         </div><!-- End .form-group -->
                                     {{--@endif--}}
                                 @endif
-                                {{--@if(Auth::user())--}}
-                                    {{--@if(Auth::user()->role_id != 5)--}}
-                                        {{--<div class="form-group required-field">--}}
-                                            {{--<label>Address </label>--}}
-                                            {{--<input type="text" class="form-control" name="address" required>--}}
 
-                                        {{--</div><!-- End .form-group -->--}}
-                                    {{--@endif--}}
-                                {{--@endif--}}
-                                
                                 @if(!Auth::user())
                                     <div class="form-group required-field">
-                                        <label>Address </label>
+                                        <label>تبوك </label>
                                         <input type="text" class="form-control" name="address" required>
 
                                     </div><!-- End .form-group -->
@@ -113,23 +102,14 @@
                                 @if(Auth::user())
                                     {{--@if(Auth::user()->role_id == 5)--}}
                                         <div class="form-group required-field">
-                                            <label>City </label>
-                                            <input type="text" class="form-control" name="city" required value="{{ $customer->city }}">
+                                            <label>مدينة </label>
+                                            <input type="text" class="form-control" name="city" required value="{{ $customer->مدينة }}">
                                         </div><!-- End .form-group -->
                                     {{--@endif--}}
                                 @endif
-                                
-                                {{--@if(Auth::user())--}}
-                                    {{--@if(Auth::user()->role_id != 5)--}}
-                                        {{--<div class="form-group required-field">--}}
-                                            {{--<label>City </label>--}}
-                                            {{--<input type="text" class="form-control" name="city" required>--}}
-                                        {{--</div><!-- End .form-group -->--}}
-                                    {{--@endif--}}
-                                {{--@endif--}}
                                 @if(!Auth::user())
                                     <div class="form-group required-field">
-                                        <label>City </label>
+                                        <label>مدينة</label>
                                         <input type="text" class="form-control" name="city" required>
                                     </div><!-- End .form-group -->
                             @endif
@@ -142,10 +122,10 @@
 
                 <div class="col-lg-4">
                     <div class="order-summary">
-                        <h3> Order Summary</h3>
+                        <h3> ملخص الطلب</h3>
 
                         <h4>
-                            <a data-toggle="collapse" href="#order-cart-section" class="collapsed" role="button" aria-expanded="true" aria-controls="order-cart-section">{{ $count }} products in Cart</a>
+                            <a data-toggle="collapse" href="#order-cart-section" class="collapsed" role="button" aria-expanded="true" aria-controls="order-cart-section">{{ $count }} المنتجات في عربة التسوق</a>
                         </h4>
 
                         <div class="collapse show" id="order-cart-section">
@@ -168,7 +148,7 @@
                                             </figure>
                                             <div>
                                                 <h2 class="product-title">
-                                                    <a href="product.html">{{ $row->product->name }}</a>
+                                                    <a href="product.html">{{ $row->product->name_ar }}</a>
                                                 </h2>
 
                                                 <span class="product-qty">Qty: {{ $row->product_quantity }}</span>
@@ -206,7 +186,7 @@
 
 
                     <div class="checkout-step-shipping">
-                        <h2 class="step-title">Payment Methods</h2>
+                        <h2 class="step-title">طرق الدفع</h2>
                         <table class="table">
                             <tbody>
                             <tr>
@@ -219,7 +199,7 @@
                                         <img src="{{ url('public/images/payment/bkash.png') }}" style="height: 60px;width:auto;">
                                     </td>
 
-                              
+
                                 @else
                                     <td style="display: flex">
                                         <input id="shipping_payment" type="radio" name="payment_method" value="Cash" checked>
@@ -245,14 +225,12 @@
 
                 </div><!-- End .col-lg-4 -->
 
-
-
             </div><!-- End .row -->
 
             <div class="row" style="margin:auto; padding-top:20px;">
                 <div class="col-lg-12">
                     <div class="checkout-steps-action">
-                        <button type="submit" class="btn btn-primary float-left"> Place Order</button>
+                        <button type="submit" class="btn btn-primary float-left"> مكان الامر</button>
                     </div><!-- End .checkout-steps-action -->
                 </div><!-- End .col-lg-8 -->
             </div><!-- End .row -->

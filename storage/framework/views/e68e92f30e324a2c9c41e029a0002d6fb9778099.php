@@ -180,8 +180,8 @@
                             Language
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="http://localhost/kosmetica/">English</a>
-                            <a class="dropdown-item" href="http://localhost/kosmetica/eshop/ar">Arabic</a>
+                            <a class="dropdown-item" href="http://223.27.94.123/kosmetica/eshop">English</a>
+                            <a class="dropdown-item" href="http://223.27.94.123/kosmetica/eshop/ar">Arabic</a>
                         </div>
                     </div>
                 </div><!-- End .container -->
@@ -243,7 +243,7 @@
                                         <div class="product">
                                             <div class="product-details">
                                                 <h4 class="product-title">
-                                                    <a href="<?php echo e(route('eshop-details',['id' => $row->product->id, 'name' => $name ])); ?>"><?php echo e($row->product->name); ?></a>
+                                                    <a href="<?php echo e(route('eshop-details.ar',['id' => $row->product->id, 'name' => $name ])); ?>"><?php echo e($row->product->name); ?></a>
                                                 </h4>
 
                                                 <span class="cart-product-info">
@@ -254,7 +254,7 @@
                                             </div><!-- End .product-details -->
 
                                             <figure class="product-image-container">
-                                                <a href="<?php echo e(route('eshop-details',['id' => $row->product->id, 'name' => $name ])); ?>" class="product-image">
+                                                <a href="<?php echo e(route('eshop-details.ar',['id' => $row->product->id, 'name' => $name ])); ?>" class="product-image">
                                                     <img src="<?php echo e(url('public/images/product', $first_image)); ?>" alt="product">
                                                 </a>
                                                 <a href="<?php echo e(route('cart-destroy-master', $row->id)); ?>" class="btn-remove" title="Remove Product"><i class="icon-cancel"></i></a>

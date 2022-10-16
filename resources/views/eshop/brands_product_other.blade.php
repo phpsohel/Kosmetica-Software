@@ -5,23 +5,23 @@
           .banner-cat {
             width:100%;
             height:140px !important;
-            
+
             }
         }
         .banner.banner-cat {
-        
+
             height:450px;
         }
     .sidebar-shop{
         display: block !important;
     }
-        
+
 </style>
   <main class="main">
       <div class="banner banner-cat" style="background-image: url('{{ asset('/') }}public/images/brand/{{$brand_name->image}}');  height: 450px; max-width:1200px; margin:auto;">
                 <div class="banner-content container">
                     <!-- <h2 class="banner-subtitle">check out over <span>200+</span></h2> -->
-                   
+
                     <!-- <a href="#" class="btn btn-dark">Shop Now</a> -->
                 </div><!-- End .banner-content -->
             </div><!-- End .banner -->
@@ -147,7 +147,7 @@
                                                 <span><i class="fa fa-star-o" style="font-size:18px"></i></span>
                                             @endfor
                                         </div>
-                                   
+
                                         <div class="product-action">
                                             <form action="" method="">
                                                 @if(Auth::user() == null)

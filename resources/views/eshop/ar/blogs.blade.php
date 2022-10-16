@@ -3,21 +3,23 @@
  <main class="main">
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
+                    <ol class="breadcrumb" style="float: right">
                         <li class="breadcrumb-item active" aria-current="page">مقالات</li>
+                        <li class="breadcrumb-item"><a href="http://223.27.94.123/kosmetica/eshop/ar"><i class="icon-home"></i></a></li>
                     </ol>
                 </div><!-- End .container -->
             </nav>
 
             <div class="container">
+                <br>
+                <br>
+                <br>
                 <div class="row">
                     <div class="col-lg-9">
-
                     	@foreach($blogs as $row)
                         <article class="entry">
                             <div class="entry-media">
-                                <a href="{{ route('blog-post', $row->id) }}">
+                                <a href="{{ route('blog-post.ar', $row->id) }}">
                                     <img src="{{ asset('/') }}{{ $row->blog_image }}" alt="Post">
                                 </a>
                             </div><!-- End .entry-media -->
@@ -29,13 +31,13 @@
                                 </div><!-- End .entry-date -->
 
                                 <h2 class="entry-title">
-                                    <a href="{{ route('blog-post', $row->id) }}">{{$row->blog_title}}</a>
+                                    <a href="{{ route('blog-post.ar', $row->id) }}">{{ $row->blog_title_ar }}</a>
                                 </h2>
 
                                 <div class="entry-content">
-                                    <p>{{ \Illuminate\Support\Str::limit($row->blog, 250, '..........') }}</p>
+                                    <p>{{ \Illuminate\Support\Str::limit($row->blog_ar, 250, '..........') }}</p>
 
-                                    <a href="{{ route('blog-post', $row->id) }}" class="read-more">Read More <i class="icon-angle-double-right"></i></a>
+                                    <a href="{{ route('blog-post.ar', $row->id) }}" class="read-more">اقرأ أكثر <i class="icon-angle-double-right"></i></a>
                                 </div><!-- End .entry-content -->
 
                                 <div class="entry-meta">

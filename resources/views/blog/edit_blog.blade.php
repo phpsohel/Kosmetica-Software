@@ -16,17 +16,23 @@
                             @csrf
                             <input type="hidden" name="id" value="{{ $blog->id }}">
                             <div class="row">
-                               
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Blog Title *</strong> </label>
+                                        <label><strong>Blog Title(en) *</strong> </label>
                                         <input type="text" name="blog_title" class="form-control" id="blog_title" aria-describedby="blog_title" value="{{ $blog->blog_title }}" required>
                                         <span class="validation-msg" id="blog_title-error"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Blog Image *</strong> </label>
+                                        <label><strong>Blog Title(ar) *</strong> </label>
+                                        <input type="text" name="blog_title_ar" class="form-control" id="blog_title" aria-describedby="blog_title" value="{{ $blog->blog_title_ar }}" required>
+                                        <span class="validation-msg" id="blog_title-error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label><strong>Blog Image *</strong> </label>
                                         <input type="hidden" name="blog_image_old" value="{{ $blog->blog_image }}">
                                         <input type="file" name="blog_image" class="form-control" id="blog_image" aria-describedby="blog_image">
                                         <span class="validation-msg" id="blog_image-error"></span>
@@ -36,11 +42,17 @@
                             </div>
 
                             <div class="row">
-                            <div class="col-md-6">
+                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Blog</strong> </label>
-                                        
+                                        <label><strong>Blog(en)</strong> </label>
                                         <textarea name="blog" class="form-control">{{ $blog->blog }}</textarea>
+                                        <span class="validation-msg" id="blog-error"></span>
+                                    </div>
+                                </div>
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label><strong>Blog(ar)</strong> </label>
+                                        <textarea name="blog_ar" class="form-control">{{ $blog->blog_ar }}</textarea>
                                         <span class="validation-msg" id="blog-error"></span>
                                     </div>
                                 </div>
@@ -58,7 +70,7 @@
                             </div>
 
                             <div class="form-group">
-                                
+
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>

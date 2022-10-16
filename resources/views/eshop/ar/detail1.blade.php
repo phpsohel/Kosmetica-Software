@@ -1,4 +1,4 @@
-@extends('layout.website')
+@extends('layout.ar_website')
 @section('home_content')
 <style>
 .ratings-table thead {

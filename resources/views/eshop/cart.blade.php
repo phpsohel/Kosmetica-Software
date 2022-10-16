@@ -111,7 +111,7 @@
                                            <input class="coupon_question"  href="#all_outlet" id="outlet" type="radio" name="shipping_cost" value="0" onchange="valueChanged()"/>
                                            <label for="male"><a data-toggle="collapse" class="collapsed" role="button" aria-expanded="false" aria-controls="all_outlet">Collect From Shop</a></label>
                                         @php
-                                           $warehouses = \App\Warehouse::where('id','!=' ,2 )->where('id','!=' ,6 )->get();
+                                           $warehouses = \App\Warehouse::where('id','!=' ,2 )->where('id','!=' ,6 )->where('id','!=' ,1 )->get();
                                         @endphp
                                         @php
                                             $cartsCheck = \App\Cart::where('user_ip', request()->ip())->latest()->first();

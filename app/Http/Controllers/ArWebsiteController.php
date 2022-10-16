@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Currency;
 use App\Product;
 use App\Area;
 use App\Product_Warehouse;
@@ -250,9 +251,18 @@ class ArWebsiteController extends Controller
                     ->whereNotIn('id', $brand_p_id)
                     ->get();*/
         $blog       = Blog::orderBy('id', 'DESC')->get();
-        return view('eshop.ar.home', compact('quick_view','product_details_info','routine_tags','ingredients_tags','skin_tags','makeup_products_best_sell','makeup_products_arrivals','hair_and_body_products_arrivals','hair_and_body_products_best_sell','skin_products_arrivals','skin_products_best_sell','products', 'categories', 'carts', 'subtotal', 'brands', 'blog'));
-    }
+        $currencies = Currency::all();
 
+        return view('eshop.ar.home', compact('currencies','quick_view','product_details_info',
+            'routine_tags','ingredients_tags','skin_tags','makeup_products_best_sell','makeup_products_arrivals',
+            'hair_and_body_products_arrivals','hair_and_body_products_best_sell','skin_products_arrivals',
+            'skin_products_best_sell','products', 'categories', 'carts', 'subtotal', 'brands', 'blog'));
+    }
+    public function getcurrency(Request $request)
+    {
+        $currency = Currency::where('id',$request->currency_id)->first();
+        return $request->currency_id;
+    }
 
 
     public function make_up()
@@ -377,7 +387,7 @@ class ArWebsiteController extends Controller
             ->take(3)
             ->get();
 
-        return view('eshop.category', compact('brands_product','categories', 'product_category', 'carts', 'subtotal', 'brands', 'category_id', 'cat_name', 'cat', 'products', 'next_products'));
+        return view('eshop.ar.category', compact('brands_product','categories', 'product_category', 'carts', 'subtotal', 'brands', 'category_id', 'cat_name', 'cat', 'products', 'next_products'));
 
     }
 
@@ -544,7 +554,7 @@ class ArWebsiteController extends Controller
             ->skip(3)
             ->take(3)
             ->get();
-        return view('eshop.category_product', compact('product_details_info','quick_view','brands','categories', 'carts', 'subtotal', 'categories_product', 'products', 'next_products', 'category_name'));
+        return view('eshop.ar.category_product', compact('product_details_info','quick_view','brands','categories', 'carts', 'subtotal', 'categories_product', 'products', 'next_products', 'category_name'));
 
     }
 
@@ -610,7 +620,7 @@ class ArWebsiteController extends Controller
             ->skip(3)
             ->take(3)
             ->get();
-        return view('eshop.category_product', compact('product_details_info','quick_view','brands','categories', 'carts', 'subtotal', 'categories_product', 'products', 'next_products', 'category_name'));
+        return view('eshop.ar.category_product', compact('product_details_info','quick_view','brands','categories', 'carts', 'subtotal', 'categories_product', 'products', 'next_products', 'category_name'));
 
     }
 
@@ -682,7 +692,7 @@ class ArWebsiteController extends Controller
             ->skip(3)
             ->take(3)
             ->get();
-        return view('eshop.routine_skin_care', compact('product_details_info','quick_view','brands','categories', 'carts', 'subtotal', 'tags_product', 'products', 'next_products', 'category_name'));
+        return view('eshop.ar.routine_skin_care', compact('product_details_info','quick_view','brands','categories', 'carts', 'subtotal', 'tags_product', 'products', 'next_products', 'category_name'));
     }
 
     public function tagwise_product_name($id , $name)
@@ -738,8 +748,6 @@ class ArWebsiteController extends Controller
             ->select('products.*')
             ->get();
 
-
-
         $products = Product::where('is_active', true)
             ->orderBy('id', 'DESC')
             ->limit(3)
@@ -749,11 +757,8 @@ class ArWebsiteController extends Controller
             ->skip(3)
             ->take(3)
             ->get();
-        return view('eshop.routine_skin_care', compact('product_details_info','quick_view','brands','categories', 'carts', 'subtotal', 'tags_product', 'products', 'next_products', 'category_name'));
+        return view('eshop.ar.routine_skin_care', compact('product_details_info','quick_view','brands','categories', 'carts', 'subtotal', 'tags_product', 'products', 'next_products', 'category_name'));
     }
-
-
-
 
 
 
@@ -899,7 +904,7 @@ class ArWebsiteController extends Controller
             ->skip(3)
             ->take(3)
             ->get();
-        return view('eshop.category_hair_scalp_product', compact('product_details_info','quick_view','brands','categories', 'carts', 'subtotal', 'categories_product', 'products', 'next_products', 'category_name'));
+        return view('eshop.ar.category_hair_scalp_product', compact('product_details_info','quick_view','brands','categories', 'carts', 'subtotal', 'categories_product', 'products', 'next_products', 'category_name'));
 
     }
 
@@ -962,7 +967,7 @@ class ArWebsiteController extends Controller
             ->skip(3)
             ->take(3)
             ->get();
-        return view('eshop.category_hair_scalp_product', compact('product_details_info','quick_view','brands','categories', 'carts', 'subtotal', 'categories_product', 'products', 'next_products', 'category_name'));
+        return view('eshop.ar.category_hair_scalp_product', compact('product_details_info','quick_view','brands','categories', 'carts', 'subtotal', 'categories_product', 'products', 'next_products', 'category_name'));
 
     }
 
@@ -1063,7 +1068,6 @@ class ArWebsiteController extends Controller
             $brand_p_id[] = $row->id;
         }
 
-
         $brands     = Brand::orderBy('title', 'ASC')->where('is_active', true)->where('title','!=','OTHERS')->where('parent_id', NULL)->get();
 
         $brand_name = Brand::where('id', $id)->first();
@@ -1099,7 +1103,7 @@ class ArWebsiteController extends Controller
             ->skip(3)
             ->take(3)
             ->get();
-        return view('eshop.brands_product', compact('product_details_info','quick_view','brands','categories', 'carts', 'subtotal', 'brands_product', 'products', 'next_products', 'brand_name'));
+        return view('eshop.ar.brands_product', compact('product_details_info','quick_view','brands','categories', 'carts', 'subtotal', 'brands_product', 'products', 'next_products', 'brand_name'));
 
     }
 
@@ -1164,7 +1168,7 @@ class ArWebsiteController extends Controller
             ->skip(3)
             ->take(3)
             ->get();
-        return view('eshop.brands_product', compact('product_details_info','quick_view','brands','categories', 'carts', 'subtotal', 'brands_product', 'products', 'next_products', 'brand_name'));
+        return view('eshop.ar.brands_product', compact('product_details_info','quick_view','brands','categories', 'carts', 'subtotal', 'brands_product', 'products', 'next_products', 'brand_name'));
 
     }
 
@@ -1243,7 +1247,7 @@ class ArWebsiteController extends Controller
             ->skip(3)
             ->take(3)
             ->get();
-        return view('eshop.brands_product', compact('product_details_info','quick_view','brands','categories', 'carts', 'subtotal', 'brands_product', 'products', 'next_products', 'brand_name'));
+        return view('eshop.ar.brands_product', compact('product_details_info','quick_view','brands','categories', 'carts', 'subtotal', 'brands_product', 'products', 'next_products', 'brand_name'));
 
     }
 
@@ -1312,7 +1316,7 @@ class ArWebsiteController extends Controller
             ->skip(3)
             ->take(3)
             ->get();
-        return view('eshop.brands_product_other', compact('quick_view','product_details_info','brands','categories', 'carts', 'subtotal', 'brands_product', 'products', 'next_products', 'brand_name'));
+        return view('eshop.ar.brands_product_other', compact('quick_view','product_details_info','brands','categories', 'carts', 'subtotal', 'brands_product', 'products', 'next_products', 'brand_name'));
 
     }
 
@@ -1463,17 +1467,13 @@ class ArWebsiteController extends Controller
                 ->limit(10)->get();
         }
 
-
-
         $next_products = Product::where('is_active', true)
             ->orderBy('id', 'DESC')
             ->skip(3)
             ->take(3)
             ->get();
-        return view('eshop.detail', compact('quick_view','product_details_info','brands','categories', 'product', 'carts', 'subtotal', 'products', 'all_products', 'next_products'));
+        return view('eshop.ar.detail', compact('quick_view','product_details_info','brands','categories', 'product', 'carts', 'subtotal', 'products', 'all_products', 'next_products'));
     }
-
-
 
 
     //detail page view
@@ -1540,20 +1540,17 @@ class ArWebsiteController extends Controller
                 ->limit(10)->get();
         }
 
-
-
         $next_products = Product::where('is_active', true)
             ->orderBy('id', 'DESC')
             ->skip(3)
             ->take(3)
             ->get();
-        return view('eshop.detail', compact('quick_view','product_details_info','brands','categories', 'product', 'carts', 'subtotal', 'products', 'all_products', 'next_products'));
+        return view('eshop.ar.detail', compact('quick_view','product_details_info','brands','categories', 'product', 'carts', 'subtotal', 'products', 'all_products', 'next_products'));
     }
-
 
     public function detail_name($name)
     {
-        $id= Product::where('name',$name)->first()->id;
+        $id= Product::where('name_ar',$name)->first()->id;
         $session = \Session::getId();
         $product_details_info = null;
         $quick_view = null ;
@@ -1571,8 +1568,6 @@ class ArWebsiteController extends Controller
         foreach ($brand_parent as $row){
             $brand_p_id[] = $row->id;
         }
-
-
         $brands     = Brand::orderBy('title', 'ASC')->where('is_active', true)->where('title','!=','OTHERS')->where('parent_id', NULL)->get();
         $products   = Product::orderBy('id', 'DESC')
             ->whereNotIn('category_id', $cat_p_id)
@@ -1614,21 +1609,13 @@ class ArWebsiteController extends Controller
                 ->whereNotIn('brand_id', $brand_p_id)
                 ->limit(10)->get();
         }
-
-
-
         $next_products = Product::where('is_active', true)
             ->orderBy('id', 'DESC')
             ->skip(3)
             ->take(3)
             ->get();
-        return view('eshop.detail', compact('quick_view','product_details_info','brands','categories', 'product', 'carts', 'subtotal', 'products', 'all_products', 'next_products'));
+        return view('eshop.ar.detail', compact('quick_view','product_details_info','brands','categories', 'product', 'carts', 'subtotal', 'products', 'all_products', 'next_products'));
     }
-
-
-
-
-
 
     //detail page view
     public function detail_quick(Request $request)
@@ -1718,7 +1705,7 @@ class ArWebsiteController extends Controller
             ->skip(3)
             ->take(3)
             ->get();
-        return view('eshop.detail', compact('quick_view','product_details_info','brands','categories', 'product', 'carts', 'subtotal', 'products', 'all_products', 'next_products'));
+        return view('eshop.ar.detail', compact('quick_view','product_details_info','brands','categories', 'product', 'carts', 'subtotal', 'products', 'all_products', 'next_products'));
     }
 
 
@@ -1794,8 +1781,6 @@ class ArWebsiteController extends Controller
         if($check)
         {
             Cart::where('product_id', $product_id)->increment('product_quantity', $request->quantity);
-
-
             return back()->with('modal', 5);
         }
         else
@@ -1848,12 +1833,10 @@ class ArWebsiteController extends Controller
         });
         $carts_row = $carts->count();
         if($carts_row > 0){
-            return view('eshop.cart', compact('brands','categories', 'carts', 'subtotal'));
-
+            return view('eshop.ar.cart', compact('brands','categories', 'carts', 'subtotal'));
         }
         else{
-
-            return view('eshop.cart', compact('brands','categories', 'carts', 'subtotal'))->with('clear_cart', 5);
+            return view('eshop.ar.cart', compact('brands','categories', 'carts', 'subtotal'))->with('clear_cart', 5);
             // echo "string";
         }
 
@@ -1888,7 +1871,7 @@ class ArWebsiteController extends Controller
             return back();
         }
         else{
-            return redirect('/cart-page/')->with('clear', 4);
+            return redirect('/ar/cart-page/')->with('clear', 4);
             // echo "string";
         }
 
@@ -1959,28 +1942,24 @@ class ArWebsiteController extends Controller
             return $t->product_price * $t->product_quantity;
         });
         $count = Cart::where('user_ip', '=', request()->ip())->where('session', $session)->count('id');
-        return view('eshop.checkout', compact('ip','sellItem','pro_id','warehouse_shipping_id','hub_id','warehouse_id','brands','categories', 'carts', 'subtotal', 'count', 'shipping_cost'));
+        return view('eshop.ar.checkout', compact('ip','sellItem','pro_id','warehouse_shipping_id','hub_id','warehouse_id','brands','categories', 'carts', 'subtotal', 'count', 'shipping_cost'));
     }
 
     //checkout Check page view
     public function checkoutCheck(Request $request)
     {
-
         $session = \Session::getId();
         $carts = Cart::where('user_ip',$request->ip)->where('session', $session)->latest()->get();
-
         foreach ($carts as $val){
             $product_id[]= $val->product_id;
         }
         $product_info = Product_Warehouse::whereIn('product_id',$product_id)->where('warehouse_id',$request->w_id)->get();
-        // dd($product_info);
 
         if (count($product_info) > 0 )
         {
             foreach ($product_info as $row){
                 $other_pro_id[]= $row->product_id;
             }
-
             $leak_w_product = Cart::join('products', 'carts.product_id', '=', 'products.id')
                 ->whereNotIn('carts.product_id',$other_pro_id)->where('carts.user_ip',$request->ip)->where('carts.session',$session)
                 ->select('carts.*','products.name')
@@ -1996,8 +1975,6 @@ class ArWebsiteController extends Controller
             $leak_product_details = 0 ;
             return [$product_info, $leak_w_product,$leak_product_details];
         }
-
-
 
     }
 
@@ -3317,7 +3294,7 @@ class ArWebsiteController extends Controller
         $subtotal = Cart::all()->where('user_ip', request()->ip())->where('session', $session)->sum(function($t){
             return $t->product_price * $t->product_quantity;
         });
-        return view('eshop.login', compact('brands','categories', 'carts', 'subtotal'));
+        return view('eshop.ar.login', compact('brands','categories', 'carts', 'subtotal'));
     }
 
     //profile page view
@@ -3517,7 +3494,7 @@ class ArWebsiteController extends Controller
 
         $lims_sale_data = Wishlist::where('customer_id', $customer->id)->orderBy('created_at', 'desc')->get();
 
-        return view('eshop.wishlist', compact('brands','categories', 'carts', 'subtotal', 'customer', 'lims_sale_data'));
+        return view('eshop.ar.wishlist', compact('brands','categories', 'carts', 'subtotal', 'customer', 'lims_sale_data'));
     }
 
     public function my_review()
@@ -3666,7 +3643,7 @@ class ArWebsiteController extends Controller
             ->skip(3)
             ->take(3)
             ->get();
-        return view('eshop.search', compact('quick_view','product_details_info','search_title','search', 'categories', 'carts', 'subtotal', 'brands', 'products', 'next_products'));
+        return view('eshop.ar.search', compact('quick_view','product_details_info','search_title','search', 'categories', 'carts', 'subtotal', 'brands', 'products', 'next_products'));
     }
 
 
@@ -3807,50 +3784,12 @@ class ArWebsiteController extends Controller
             ->skip(3)
             ->take(3)
             ->get();
-
-        return view('eshop.search', compact('product_details_info','quick_view','search_title','search', 'categories', 'carts', 'subtotal', 'brands', 'products', 'next_products'));
+        return view('eshop.ar.search', compact('product_details_info','quick_view','search_title','search', 'categories', 'carts', 'subtotal', 'brands', 'products', 'next_products'));
     }
-
-
-
-//    public function offer()
-//    {
-//        $session = \Session::getId();
-//        $brands     = Brand::orderBy('title', 'ASC')->where('is_active', true)->where('title','!=','OTHERS')->where('parent_id', NULL)->get();
-//        $categories = Category::orderBy('categories.id', 'DESC')
-//            ->join('products', 'products.category_id', '=', 'categories.id')
-//            ->where('categories.is_active', true)
-//            ->where('categories.parent_id', null)
-//            ->where('products.is_active', true)
-//            ->select('categories.id', 'categories.name')
-//            ->distinct('categories.name')
-//            ->limit(5)
-//            ->get();
-//        $carts = Cart::where('user_ip', request()->ip())->where('session', $session)->latest()->get();
-//        $subtotal = Cart::all()->where('user_ip', request()->ip())->where('session', $session)->sum(function($t){
-//            return $t->product_price * $t->product_quantity;
-//        });
-//
-//        $discount = Product::orderBy('id', 'DESC')
-//            ->where('promotion', 1)
-//            ->where('is_active', true)
-//            ->get();
-//        $products = Product::where('is_active', true)
-//            ->orderBy('id', 'DESC')
-//            ->limit(3)
-//            ->get();
-//        $next_products = Product::where('is_active', true)
-//            ->orderBy('id', 'DESC')
-//            ->skip(3)
-//            ->take(3)
-//            ->get();
-//        return view('eshop.offer', compact('brands','discount','categories', 'carts', 'subtotal', 'products', 'next_products'));
-//    }
 
     //newsletter post
     public function newsletter(Request $request)
     {
-
         $request->validate([
             'email'           => 'required'
         ]);
@@ -3860,12 +3799,9 @@ class ArWebsiteController extends Controller
         $newsletter->email = $request->email;
 
         $newsletter->save();
-
         // return redirect('/eshop');
-
         return back()->with('newsletter_modal', 1);
     }
-
     //blog post
     public function blog_post($id)
     {
@@ -3895,26 +3831,18 @@ class ArWebsiteController extends Controller
             ->limit(2)
             ->get();
 
-        return view('eshop.blog_post', compact('brands','categories', 'carts', 'subtotal', 'blog', 'blogs', 'recent_blog'));
+        return view('eshop.ar.blog_post', compact('brands','categories', 'carts', 'subtotal', 'blog', 'blogs', 'recent_blog'));
     }
-
     // MINI-Shop
-
-
     public function mini_shop()
     {
-
         $session = \Session::getId();
         $product_details_info = null;
         $quick_view = null ;
 
-
         $brands     = Brand::orderBy('title', 'ASC')->where('is_active', true)->where('title','!=','OTHERS')->where('parent_id', NULL)->get();
         $products   = Product::orderBy('id', 'DESC')->where('is_active', true)->limit(3)->get();
         $cat_name = Category::where('id', '=', 1)->first();
-
-
-
 
         $brand_parent_id = Brand::where('title','=','Invisible')->first()->id;
         $brand_parent = Brand::where('parent_id', $brand_parent_id)->get();
@@ -3922,8 +3850,6 @@ class ArWebsiteController extends Controller
         foreach ($brand_parent as $row){
             $brand_p_id[] = $row->id;
         }
-
-
 
         $cat = Category::orderBy('id', 'DESC')
             ->where('is_active', true)
@@ -4046,7 +3972,7 @@ class ArWebsiteController extends Controller
             ->get();
         $category_id = 1;
 
-        return view('eshop.mini_shop', compact('quick_view','product_details_info','brands_product','categories', 'product_category', 'carts', 'subtotal', 'brands', 'category_id', 'cat_name', 'cat', 'products', 'next_products'));
+        return view('eshop.ar.mini_shop', compact('quick_view','product_details_info','brands_product','categories', 'product_category', 'carts', 'subtotal', 'brands', 'category_id', 'cat_name', 'cat', 'products', 'next_products'));
     }
 
 

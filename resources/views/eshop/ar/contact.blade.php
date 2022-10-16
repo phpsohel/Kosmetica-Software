@@ -3,15 +3,20 @@
 <main class="main">
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
+                    <ol class="breadcrumb" style="float: right">
                         <li class="breadcrumb-item active" aria-current="page">اتصل بنا</li>
+                        <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
                     </ol>
                 </div><!-- End .container -->
             </nav>
             <div class="container">
+                <br>
+                <br>
+                <br>
+                <br>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-5">
+                        <br>
                         <h2 class="light-title">بيانات  <strong>المتصل</strong></h2>
                         <div class="contact-info">
                             @php
@@ -32,10 +37,12 @@
 
                         </div><!-- End .contact-info -->
                     </div><!-- End .col-md-4 -->
-                    <div class="col-md-8">
-                        <h2 class="light-title"><strong> اتصل بنا</strong></h2>
-                         @include('includes.message')
-                            <form action="{{ route('post-contact') }}" method="POST">
+                    <div class="col-md-7" >
+                        <div class="class">
+                            <h2 class="light-title" style="text-align: right;" ><strong> اتصل بنا</strong></h2>
+                             @include('includes.message')
+
+                             <form action="{{ route('post-contact') }}" method="POST" style="text-align: -webkit-right;">
                         @csrf
                         <div class="form-group required-field">
                             <label for="contact-name">اسم</label>
@@ -56,10 +63,11 @@
                             <label for="contact-message">ما الذي يدور في ذهنك؟</label>
                             <textarea cols="30" rows="1" id="contact-message" class="form-control" name="message" required></textarea>
                         </div><!-- End .form-group -->
-                        <div class="form-footer">
+                        <div class="form-footer" style="float: right">
                             <button type="submit" class="btn btn-primary">يُقدِّم</button>
                         </div><!-- End .form-footer -->
                     </form>
+                        </div>
                 </div><!-- End .col-md-8 -->
 
                 </div><!-- End .row -->

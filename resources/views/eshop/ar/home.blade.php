@@ -213,11 +213,7 @@
          </div>
 
             <div class="container tag_product"  id="tag_product" style="display: -webkit-box; overflow-y:scroll;">
-
             </div>
-
-
-
 
             <!-- Skin care starts -->
             <div class="home-product-tabs" style="margin-top:50px;">
@@ -247,7 +243,7 @@
                            @endphp
                         <div class="product-default">
                             <figure>
-                                <a href="{{ route('eshop-details',['id' => $row->id, 'name' => $name ]) }}">
+                                <a href="{{ route('eshop-details.ar',['id' => $row->id, 'name' => $name ]) }}">
                                     <img src="{{ url('public/images/product', $first_image) }}" alt="product" style="height: auto; width: auto; margin: auto;">
                                 </a>
                             </figure>
@@ -257,23 +253,23 @@
                                 @endphp
                                 @if($brand_name)
                                     <div class="cat-box">
-                                        <span  style="font-size: 13px;" class="product-cat">{{ $brand_name->title }}</span>
+                                        <span  style="font-size: 13px;" class="product-cat">{{ $brand_name->title_ar }}</span>
                                     </div><!-- End .price-box -->
                                 @endif
-                                {{--@php--}}
-                                    {{--$cat_name = \App\Category::where('id',$row->category_id)->first();--}}
-                                {{--@endphp--}}
-                                {{--<div class="cat-box">--}}
-                                    {{--<span  style="font-size: 13px;" class="product-cat">{{ $cat_name->name }}</span>--}}
-                                {{--</div><!-- End .price-box -->--}}
-
                                 <h2 class="product-title">
-                                    <a href="{{ route('eshop-details',['id' => $row->id, 'name' => $name ]) }}" >{{$row->name}}</a>
+                                    <a href="{{ route('eshop-details.ar',['id' => $row->id, 'name' => $name ]) }}" >{{$row->name_ar}}</a>
                                 </h2>
 
                                 <div class="price-box">
-                                    @if($row->promotion == null)
-                                        <span class="product-price">৳{{$row->price}}</span>
+                                    @if($row->promotion == null)cmd
+
+{{--                                        @if($row->promotion == null)--}}
+{{--                                            $uae = exchange_rate*$row->price;--}}
+{{--                                            <span class="product-price">৳{{ $uae}}</span>--}}
+{{--                                        @else--}}
+{{--                                            echo 'no';--}}
+{{--                                        @endif--}}
+                                        <span class="product-price">৳{{ $row->price }}</span>
                                     @else
                                         <span class="old-price">৳{{$row->price}}</span>
                                         <span class="promotional-price">৳{{$row->promotion_price}}</span>
@@ -312,17 +308,17 @@
                                     <div class="product-action">
                                         <form action="" method="">
                                             @if(Auth::user() == null)
-                                                <a href="{{ route('eshop-wishlist-login-check', $row->id) }}" class="paction add-wishlist" title="Add to Wishlist"></a>
+                                                <a href="{{ route('eshop-wishlist-login-check.ar', $row->id) }}" class="paction add-wishlist" title="Add to Wishlist"></a>
                                             @else
-                                                <a href="{{ route('eshop-wishlist', $row->id) }}" class="paction add-wishlist" title="Add to Wishlist" ></a>
+                                                <a href="{{ route('eshop-wishlist.ar', $row->id) }}" class="paction add-wishlist" title="Add to Wishlist" ></a>
                                             @endif
                                         </form>
-                                          <form action="{{ route('add-to-cart', $row->id) }}" method="POST">
+                                          <form action="{{ route('add-to-cart.ar', $row->id) }}" method="POST">
                                           @csrf
                                          @if($row->qty > 0 )
                                           <button type="submit" class="btn-icon btn-add-cart"><i class="icon-bag"></i>أضف إلى السلة</button>
                                          @else
-                                         <a href="{{ route('eshop-details',['id' => $row->id, 'name' => $name ]) }}" class="btn-add-cart paction"><i class="fa fa-eye" aria-hidden="true"></i> عرض التفاصيل</a>
+                                         <a href="{{ route('eshop-details.ar',['id' => $row->id, 'name' => $name ]) }}" class="btn-add-cart paction"><i class="fa fa-eye" aria-hidden="true"></i> عرض التفاصيل</a>
                                          @endif
                                             <input type="hidden" name="product_price" value="{{ $row->price}}">
                                             <input type="hidden" name="promotion_price" value="{{ $row->promotion_price}}">
@@ -345,16 +341,14 @@
                             <div class="new-products owl-carousel owl-theme">
                                 @foreach($skin_products_arrivals as $row)
                                     @php
-
                                         $name =  str_replace(' ', '-', $row->name);
                                            $image =  $row->image;
                                            $image = explode(',',$image);
                                            $first_image = $image[0];
-
                                     @endphp
                                     <div class="product-default">
                                         <figure>
-                                            <a href=" {{ route('eshop-details',['id' => $row->id, 'name' => $name ]) }}">
+                                            <a href=" {{ route('eshop-details.ar',['id' => $row->id, 'name' => $name ]) }}">
                                                 <img src="{{ url('public/images/product', $first_image) }}" alt="product" style="height: auto; width: auto; margin: auto;">
                                             </a>
                                         </figure>
@@ -364,12 +358,12 @@
                                             @endphp
                                             @if($brand_name)
                                             <div class="cat-box">
-                                                <span  style="font-size: 13px;" class="product-cat">{{ $brand_name->title }}</span>
+                                                <span  style="font-size: 13px;" class="product-cat">{{ $brand_name->title_ar }}</span>
                                             </div><!-- End .price-box -->
                                             @endif
 
                                             <h2 class="product-title">
-                                                <a href=" {{ route('eshop-details',['id' => $row->id, 'name' => $name ]) }}" >{{$row->name}}</a>
+                                                <a href=" {{ route('eshop-details.ar',['id' => $row->id, 'name' => $name ]) }}" >{{$row->name_ar}}</a>
                                             </h2>
                                             <div class="price-box">
                                                 @if($row->promotion == null)
@@ -411,9 +405,9 @@
                                             <div class="product-action">
                                                 <form action="" method="">
                                                     @if(Auth::user() == null)
-                                                        <a href="{{ route('eshop-wishlist-login-check', $row->id) }}" class="paction add-wishlist" title="Add to Wishlist"></a>
+                                                        <a href="{{ route('eshop-wishlist-login-check.ar', $row->id) }}" class="paction add-wishlist" title="Add to Wishlist"></a>
                                                     @else
-                                                        <a href="{{ route('eshop-wishlist', $row->id) }}" class="paction add-wishlist" title="Add to Wishlist" ></a>
+                                                        <a href="{{ route('eshop-wishlist.ar', $row->id) }}" class="paction add-wishlist" title="Add to Wishlist" ></a>
                                                     @endif
                                                 </form>
                                                 <form action="{{ route('add-to-cart', $row->id) }}" method="POST">
@@ -421,7 +415,7 @@
                                                     @if($row->qty > 0 )
                                                         <button type="submit" class="btn-icon btn-add-cart"><i class="icon-bag"></i>ADD TO CART</button>
                                                     @else
-                                                        <a href=" {{ route('eshop-details',['id' => $row->id, 'name' => $name ]) }}" class="btn-add-cart paction"><i class="fa fa-eye" aria-hidden="true"></i> View Details</a>
+                                                        <a href=" {{ route('eshop-details.ar',['id' => $row->id, 'name' => $name ]) }}" class="btn-add-cart paction"><i class="fa fa-eye" aria-hidden="true"></i> View Details</a>
                                                     @endif
                                                     <input type="hidden" name="product_price" value="{{ $row->price}}">
                                                     <input type="hidden" name="promotion_price" value="{{ $row->promotion_price}}">
@@ -479,7 +473,7 @@
                                 <button type="button" class="close mobile_close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 <br>
                                 <div class="product-single-details">
-                                    <h1 class="product-title">{{ $product_details_info->name }} </h1>
+                                    <h1 class="product-title">{{ $product_details_info->name_ar }} </h1>
                                     @php
                                            $comments = \App\Review::where('product_id',$product_details_info->id)->where('comment' ,'!=', null)->orderBy('id','DESC')->get();
                                             $full_rating = 0 ;
@@ -521,23 +515,23 @@
                                     </div><!-- End .product-desc -->
 
 
-                                    <form action="{{ route('add-to-cart', $product_details_info->id) }}" method="POST">
+                                    <form action="{{ route('add-to-cart.ar', $product_details_info->id) }}" method="POST">
                                     @csrf
                                     <div class="product-action">
                                         @if($product_details_info->qty > 0 )
-                                        <button type="submit" class="paction add-cart" title="Add to Cart"><span>Add to Cart</span></button>
+                                        <button type="submit" class="paction add-cart" title="Add to Cart"><span>أضف إلى السلة</span></button>
                                         @else
-                                            <a href="{{ route('eshop-details',['id' => $product_details_info->id, 'name' => $name ]) }}" class="btn-add-cart paction"><i class="fa fa-eye" aria-hidden="true"></i> View Details</a>
+                                            <a href="{{ route('eshop-details.ar',['id' => $product_details_info->id, 'name' => $name ]) }}" class="btn-add-cart paction"><i class="fa fa-eye" aria-hidden="true"></i> عرض التفاصيل</a>
                                         @endif
 
                                         <input type="hidden" name="product_price" value="{{ $product_details_info->price}}">
 
                                         @if(Auth::user() == null)
-                                        <a href="{{ route('eshop-wishlist-login-check', $product_details_info->id) }}" class="paction add-wishlist" title="Add to Wishlist">
+                                        <a href="{{ route('eshop-wishlist-login-check.ar', $product_details_info->id) }}" class="paction add-wishlist" title="Add to Wishlist">
 
                                         </a>
                                         @else
-                                            <a href="{{ route('eshop-wishlist', $product_details_info->id) }}" class="paction add-wishlist" title="Add to Wishlist" ></a>
+                                            <a href="{{ route('eshop-wishlist.ar', $product_details_info->id) }}" class="paction add-wishlist" title="Add to Wishlist" ></a>
                                         @endif
                                        </div><!-- End .product-action -->
                                    </form>
@@ -555,10 +549,6 @@
                 </div>
             </div>
         @endif
-
-
-
-
             <div class="company-section">
                 <div class="container">
                     <div class="row align-items-lg-center">
@@ -583,7 +573,7 @@
                                  @foreach($blog as $row)
                                      <article class="entry">
                                     <div class="entry-media">
-                                        <a href="{{ route('blog-post', $row->id) }}">
+                                        <a href="{{ route('blog-post.ar', $row->id) }}">
                                             <img src="http://223.27.94.123/kosmetica/{{ $row->blog_image }}" alt="Post">
                                         </a>
                                     </div><!-- End .entry-media -->
@@ -595,13 +585,13 @@
                                         </div><!-- End .entry-date -->
 
                                         <h2 class="entry-title">
-                                            <a href="{{ route('blog-post', $row->id) }}">{{ $row->blog_title }}</a>
+                                            <a href="{{ route('blog-post.ar', $row->id) }}">{{ $row->blog_title_ar }}</a>
                                         </h2>
 
                                         <div class="entry-content">
-                                            <p>{{ \Illuminate\Support\Str::limit($row->blog, 250, '..........') }}</p>
+                                            <p>{{ \Illuminate\Support\Str::limit($row->blog_ar, 250, '..........') }}</p>
 
-                                            <a href="{{ route('blog-post', $row->id) }}" class="read-more">اقرأ أكثر <i class="icon-angle-double-right"></i></a>
+                                            <a href="{{ route('blog-post.ar', $row->id) }}" class="read-more">اقرأ أكثر <i class="icon-angle-double-right"></i></a>
                                         </div><!-- End .entry-content -->
                                     </div><!-- End .entry-body -->
                                 </article>
@@ -720,7 +710,6 @@
 
              });
 
-
   /// Ingredients Product
              $(".ingredientdata").on("click", function(){
                  var tag_id = $(this).data("id");
@@ -796,8 +785,6 @@
                  });
 
              });
-
-
 
              /// Skin Product
              $(".skinprodata").on("click", function(){

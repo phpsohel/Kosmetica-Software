@@ -1,12 +1,11 @@
-@extends('layout.website')
+@extends('layout.ar_website')
 @section('home_content')
-
   <main class="main">
             <div class="banner banner-cat" style="background-image: url('{{ asset('/') }}public/assets/frontend/images/sliderbackground.png');">
                 <div class="banner-content container">
                     <!-- <h2 class="banner-subtitle">check out over <span>200+</span></h2> -->
-                    <h1 class="banner-title">
-                        Searched Items  for "{{$search_title}}"
+                    <h1 class="banner-title" style="float: right">
+                        العناصر التي تم البحث عنها من أجل "{{$search_title}}"
                     </h1>
                     <!-- <a href="#" class="btn btn-dark">Shop Now</a> -->
                 </div><!-- End .banner-content -->
@@ -14,10 +13,9 @@
 
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container">
-                    <ol class="breadcrumb mt-0">
+                    <ol class="breadcrumb mt-0" style="float: right">
+                        <li class="breadcrumb-item"><a href="#">نتيجة البحث</a></li>
                         <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="#">Search Result</a></li>
-                        <!-- <li class="breadcrumb-item active" aria-current="page">Headsets</li> -->
                     </ol>
                 </div><!-- End .container -->
             </nav>
@@ -34,62 +32,9 @@
                                           $first_image = $image[0];
                                     @endphp
                             <div class="col-6 col-md-4 col-lg-3 col-xl-3">
-                                {{--<div class="product-default">--}}
-                                    {{--<figure>--}}
-                                        {{--<a href="{{ route('eshop-detail', $row->id) }}">--}}
-                                            {{--<img src="{{ url('public/images/product',$first_image) }}" alt="product" style="height: auto; width: auto; margin: auto;">--}}
-                                        {{--</a>--}}
-                                    {{--</figure>--}}
-                                    {{--<div class="product-details">--}}
-                                        {{--<div class="price-box" style="display: inline-flex;margin-bottom: 5px;">--}}
-                                            {{--<img src="{{ url('public/images/brand', $brands[0]->image) }}"  style="height: 20px; width: auto;">--}}
-                                            {{--<span class="product-price">{{ $brands[0]->title }}</span>--}}
-                                        {{--</div><!-- End .price-box -->--}}
-
-                                        {{--@php--}}
-                                            {{--$brand_name = \App\Brand:: where('id',$row->brand_id)->first();--}}
-                                        {{--@endphp--}}
-                                        {{--@if($brand_name)--}}
-                                            {{--<div class="cat-box">--}}
-                                                {{--<span  style="font-size: 13px;" class="product-cat">{{ $brand_name->title }}</span>--}}
-                                            {{--</div><!-- End .price-box -->--}}
-                                        {{--@endif--}}
-
-                                        {{--@php--}}
-                                            {{--$cat_name = \App\Category::where('id',$row->category_id)->first();--}}
-                                        {{--@endphp--}}
-                                        {{--<div class="cat-box">--}}
-                                            {{--<span  style="font-size: 13px;" class="product-cat">{{ $cat_name->name }}</span>--}}
-                                        {{--</div><!-- End .price-box -->--}}
-
-                                        {{--<h2 class="product-title">--}}
-                                            {{--<a href="{{ route('eshop-detail', $row->id) }}">{{ $row->name }}</a>--}}
-                                        {{--</h2>--}}
-                                        {{--<div class="price-box">--}}
-                                            {{--<span class="product-price">৳{{ $row->price }}</span>--}}
-                                        {{--</div><!-- End .price-box -->--}}
-                                        {{--<div class="ratings-container">--}}
-                                            {{--<div class="product-ratings">--}}
-                                                {{--<span class="ratings" style="width:100%"></span><!-- End .ratings -->--}}
-                                                {{--<span class="tooltiptext tooltip-top"></span>--}}
-                                            {{--</div><!-- End .product-ratings -->--}}
-                                        {{--</div><!-- End .product-container -->--}}
-                                         {{--<form action="{{ route('eshop-detail', $row->id) }}" method="get">--}}
-                                    {{--@csrf--}}
-                                    {{--<div class="product-action">--}}
-                                        {{--<a href="#" class="btn-icon-wish"><i class="icon-heart"></i></a>--}}
-                                        {{--<button type="submit" class="btn-icon btn-add-cart"><i class="icon-bag"></i>ADD TO CART</button>--}}
-                                        {{--<input type="hidden" name="product_price" value="{{ $row->price}}">--}}
-                                        {{--<a href="{{ route('eshop-detail', $row->id) }}" class="btn-quickview" title="Quick View"><i class="fas fa-external-link-alt"></i></a> --}}
-                                    {{--</div>--}}
-                                {{--</form>--}}
-                                    {{--</div><!-- End .product-details -->--}}
-                                {{--</div>--}}
-
-
                                 <div class="product-default">
                                     <figure>
-                                        <a href="{{ route('eshop-detail', $row->id) }}">
+                                        <a href="{{ route('eshop-detail.ar', $row->id) }}">
                                             <img src="{{ url('public/images/product', $first_image) }}" alt="product" style="height: auto; width: auto; margin: auto;">
                                         </a>
                                     </figure>
@@ -102,18 +47,9 @@
                                                 <span  style="font-size: 13px;" class="product-cat">{{ $brand_name->title }}</span>
                                             </div><!-- End .price-box -->
                                         @endif
-
-                                        {{--@php--}}
-                                        {{--$cat_name = \App\Category::where('id',$row->category_id)->first();--}}
-                                        {{--@endphp--}}
-                                        {{--<div class="cat-box">--}}
-                                        {{--<span  style="font-size: 13px;" class="product-cat">{{ $cat_name->name }}</span>--}}
-                                        {{--</div><!-- End .price-box -->--}}
-
                                         <h2 class="product-title">
-                                            <a href="{{ route('eshop-detail', $row->id) }}" >{{$row->name}}</a>
+                                            <a href="{{ route('eshop-detail.ar', $row->id) }}" >{{$row->name}}</a>
                                         </h2>
-
                                         <div class="price-box">
                                             @if($row->promotion == null)
                                                 <span class="product-price">৳{{$row->price}}</span>

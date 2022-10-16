@@ -87,7 +87,7 @@
                                   @endif
                                 <div class="col-lg-7 col-md-6">
                                     <div class="product-single-details">
-                                        <p style='font-weight:bold;margin-bottom:0px;'><a href="{{ route('brands-product', $product->brand_id) }}">{{ $brand_name->title }}</a> </p>
+                                        <p style='font-weight:bold;margin-bottom:0px;'><a href="{{ route('brands-product', $product->brand_id) }}">{{ $brand_name->title}}</a> </p>
                                         <span style="font-size: 20px;" class="product-title">{{$product->name}}</span>
                                         <br>
                                         @php
@@ -396,7 +396,7 @@
 
 
                                 @php
-                                    $warehouse = \App\Warehouse::where('id','!=',2)->where('id','!=',6)->get();
+                                    $warehouse = \App\Warehouse::where('id','!=',2)->where('id','!=',6)->where('id','!=',1)->get();
                                 @endphp
                                 <div class="tab-pane fade" id="product-stock-content" role="tabpanel" aria-labelledby="product-tab-reviews">
                                     <div class="product-stock-content">
